@@ -23,30 +23,25 @@ namespace YesDay
             var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
-                    {
+            {
                         o.Password.RequireNonAlphanumeric = false;
-                        o.Password.RequiredLength = 8;
-                    })
-                    .AddEntityFrameworkStores<MyIdentityContext>()
-                    .AddDefaultTokenProviders();
-            services.ConfigureApplicationCookie(o => o.LoginPath = "/couple/login");
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/couple/login");
+                        o.Password.RequiredLength = 8;  
+            })
+            .AddEntityFrameworkStores<MyIdentityContext>()
+            .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(o => o.LoginPath = "/Couple/login");
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Couple/login");
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.UseSession();
-            app.UseAuthentication();
-            //var mySecretConnString = conf.GetConnectionString("myConnString");
             app.UseDeveloperExceptionPage();
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
-            //app.UseStaticFiles();
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello WORLD");
-            //});
+
         }
     }
 }
