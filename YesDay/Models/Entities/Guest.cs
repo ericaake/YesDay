@@ -6,7 +6,7 @@ namespace YesDay.Models.Entities
     public partial class Guest
     {
         public int Id { get; set; }
-        public int Coupleref { get; set; }
+        public string Userref { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Address { get; set; }
@@ -17,7 +17,5 @@ namespace YesDay.Models.Entities
         public string Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
-
-        public CoupleAccount CouplerefNavigation { get; set; }
     }
 }

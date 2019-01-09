@@ -15,7 +15,6 @@ namespace YesDay.Models.Entities
         {
         }
 
-        public virtual DbSet<CoupleAccount> CoupleAccount { get; set; }
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<Guest> Guest { get; set; }
         public virtual DbSet<Task> Task { get; set; }
@@ -25,37 +24,13 @@ namespace YesDay.Models.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CoupleAccount>(entity =>
-            {
-                entity.HasIndex(e => e.Email)
-                    .HasName("UQ__CoupleAc__A9D10534502FE869")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Budget).HasColumnType("money");
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Firstname1)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Firstname2)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.WeddingDate).HasColumnType("datetime");
-            });
-
             modelBuilder.Entity<Expense>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -68,17 +43,15 @@ namespace YesDay.Models.Entities
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.HasOne(d => d.CouplerefNavigation)
-                    .WithMany(p => p.Expense)
-                    .HasForeignKey(d => d.Coupleref)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Expense__Coupler__534D60F1");
+                entity.Property(e => e.Userref)
+                    .IsRequired()
+                    .HasMaxLength(450);
             });
 
             modelBuilder.Entity<Guest>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Guest__A9D10534904ADDC4")
+                    .HasName("UQ__Guest__A9D1053468C98F96")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -107,13 +80,11 @@ namespace YesDay.Models.Entities
                     .HasColumnName("RSVP")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.WeddingCrewTitle).HasMaxLength(50);
+                entity.Property(e => e.Userref)
+                    .IsRequired()
+                    .HasMaxLength(450);
 
-                entity.HasOne(d => d.CouplerefNavigation)
-                    .WithMany(p => p.Guest)
-                    .HasForeignKey(d => d.Coupleref)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Guest__Coupleref__4D94879B");
+                entity.Property(e => e.WeddingCrewTitle).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Task>(entity =>
@@ -128,11 +99,9 @@ namespace YesDay.Models.Entities
 
                 entity.Property(e => e.TaskNote).HasMaxLength(250);
 
-                entity.HasOne(d => d.CouplerefNavigation)
-                    .WithMany(p => p.Task)
-                    .HasForeignKey(d => d.Coupleref)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Task__Coupleref__59063A47");
+                entity.Property(e => e.Userref)
+                    .IsRequired()
+                    .HasMaxLength(450);
             });
 
             modelBuilder.Entity<Vendor>(entity =>
@@ -145,11 +114,9 @@ namespace YesDay.Models.Entities
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.HasOne(d => d.CouplerefNavigation)
-                    .WithMany(p => p.Vendor)
-                    .HasForeignKey(d => d.Coupleref)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Vendor__Couplere__5629CD9C");
+                entity.Property(e => e.Userref)
+                    .IsRequired()
+                    .HasMaxLength(450);
             });
         }
     }

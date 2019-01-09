@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,10 +10,20 @@ namespace YesDay.Models
 {
     public class CoupleServices
     {
+        UserManager<MyIdentityUser> userManager;
+        SignInManager<MyIdentityUser> signInManager;
+        RoleManager<IdentityRole> roleManager;
         YesDayContext context;
 
-        public CoupleServices(YesDayContext context)
+        public CoupleServices(
+            UserManager<MyIdentityUser> userManager,
+            SignInManager<MyIdentityUser> signInManager,
+            RoleManager<IdentityRole> roleManager, 
+            YesDayContext context)
         {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.roleManager = roleManager;
             this.context = context;
         }
 
@@ -32,9 +43,22 @@ namespace YesDay.Models
                     Rsvp = r.Rsvp,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
-                    CouplerefNavigation = r.CouplerefNavigation
+                    //CouplerefNavigation = r.CouplerefNavigation
                 })
                 .ToArray();
+        }
+
+        internal async Task<IdentityResult> RegisterUserAsync(PublicSignUpVM newCouple)
+        {
+            return await userManager.CreateAsync(
+                new MyIdentityUser
+                {
+                    Email = newCouple.Email,
+                    FirstName1 = newCouple.FirstName1,
+                    FirstName2 = newCouple.FirstName2,
+                    WeddingDate = newCouple.WeddingDate
+                },
+                newCouple.Password);
         }
     }
 }
