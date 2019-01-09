@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace YesDay.Models.Entities
+namespace YesDay.Models.ViewModels
 {
-    public partial class Guest
+    public class CoupleAddNewGuestVM
     {
-        public int Id { get; set; }
-        public string Userref { get; set; }
+        //Kom ihåg att lägga till UserRef också i denna. 
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Address { get; set; }
@@ -17,6 +18,5 @@ namespace YesDay.Models.Entities
         public string Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
-
     }
 }

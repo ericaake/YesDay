@@ -36,5 +36,26 @@ namespace YesDay.Models
                 .ToArray();
 
         }
+
+        public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
+        {
+            Guest guest = new Guest()
+            {
+                Firstname = newGuestVM.Firstname,
+                Lastname = newGuestVM.Lastname,
+                Address = newGuestVM.Address,
+                Email = newGuestVM.Email,
+                InvitedBy = newGuestVM.InvitedBy,
+                GuestTitle = newGuestVM.GuestTitle,
+                WeddingCrewTitle = newGuestVM.WeddingCrewTitle,
+                Rsvp = newGuestVM.Rsvp,
+                FoodPreference = newGuestVM.FoodPreference,
+                GuestNote = newGuestVM.GuestNote
+
+            };
+            context.Guest.Add(guest);
+            context.SaveChanges();
+
+        }
     }
 }

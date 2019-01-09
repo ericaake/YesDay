@@ -1,0 +1,25 @@
+﻿@model CoupleAddNewGuestVM
+
+
+<br />
+<form asp-controller="Couple" asp-action="AddGuest">
+    <div>
+
+        <label asp-for="Firstname"></label>
+        <input asp-for="Firstname" />
+        <span asp-validation-for="Firstname"></span>
+        <br />
+        <label asp-for="Lastname"></label>
+        <input asp-for="Lastname" />
+        <br />
+        <label asp-for="Address"></label>
+        <input asp-for="Address" />
+        <br />
+        <label asp-for="Email"></label>
+        <input  asp-for="Email"  />
+        <span asp-validation-for="Email"></span>
+        <br />
+    </div>
+    <input class="btn btn-light" type="submit" value="Lägg till ny gäst" />
+    <br /><br />
+</form>
