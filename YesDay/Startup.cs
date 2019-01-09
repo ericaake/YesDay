@@ -32,6 +32,7 @@ namespace YesDay
 
             services.ConfigureApplicationCookie(o => o.LoginPath = "/Couple/login");
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Couple/login");
+            services.AddTransient<CoupleServices>();
             services.AddMvc();
         }
 
