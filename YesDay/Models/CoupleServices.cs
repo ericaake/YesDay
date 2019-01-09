@@ -31,10 +31,10 @@ namespace YesDay.Models
                     WeddingCrewTitle = r.WeddingCrewTitle,
                     Rsvp = r.Rsvp,
                     FoodPreference = r.FoodPreference,
-                    GuestNote = r.GuestNote,
-                    CouplerefNavigation = r.CouplerefNavigation
+                    GuestNote = r.GuestNote
                 })
                 .ToArray();
+
         }
     }
 }

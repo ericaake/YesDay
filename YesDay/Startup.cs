@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YesDay.Models;
+using YesDay.Models.Entities;
 
 namespace YesDay
 {
@@ -21,6 +22,8 @@ namespace YesDay
         public void ConfigureServices(IServiceCollection services)
         {
             var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            services.AddMvc();
+            services.AddDbContext<YesDayContext>(o => o.UseSqlServer(connString));
             services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
@@ -33,7 +36,6 @@ namespace YesDay
             services.ConfigureApplicationCookie(o => o.LoginPath = "/Couple/login");
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Couple/login");
             services.AddTransient<CoupleServices>();
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
