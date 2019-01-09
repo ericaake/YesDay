@@ -11,9 +11,17 @@ namespace YesDay.Controllers
     {
         CoupleServices services;
 
+        public CoupleController(CoupleServices services)
+        {
+            this.services = services;
+        }
+
+        [Route("")]
+        [HttpGet]
         public IActionResult GuestList()
         {
             return View(services.ShowAllGuests());
+
         }
     }
 }
