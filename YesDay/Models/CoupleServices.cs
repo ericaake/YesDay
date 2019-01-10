@@ -43,7 +43,7 @@ namespace YesDay.Models
                     Rsvp = r.Rsvp,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
-                    //CouplerefNavigation = r.CouplerefNavigation
+                    Userref = r.Userref
                 })
                 .ToArray();
         }
@@ -63,6 +63,8 @@ namespace YesDay.Models
 
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
         {
+            var temp = Userref();   //Hämta parets id tilldela userref för att mappa gäst mot par
+
             Guest guest = new Guest()
             {
                 Firstname = newGuestVM.Firstname,
@@ -74,12 +76,21 @@ namespace YesDay.Models
                 WeddingCrewTitle = newGuestVM.WeddingCrewTitle,
                 Rsvp = newGuestVM.Rsvp,
                 FoodPreference = newGuestVM.FoodPreference,
-                GuestNote = newGuestVM.GuestNote
+                GuestNote = newGuestVM.GuestNote,
+                Userref = newGuestVM.Userref
 
             };
             context.Guest.Add(guest);
             context.SaveChanges();
-
         }
+
+        public string Userref()
+        {
+            //var coupleId = userManager.GetUserId(userManager).ToString();
+            return null;
+        }
+
+
+        //public CoupleChecklistVM[] Get        //Lägger till progress-kolumn i task schema
     }
 }

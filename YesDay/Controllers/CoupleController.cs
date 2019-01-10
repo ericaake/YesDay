@@ -41,5 +41,7 @@ namespace YesDay.Controllers
             return RedirectToAction(nameof(GuestList));
         }
 
+
+
     }
 }
