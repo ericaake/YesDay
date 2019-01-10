@@ -44,7 +44,7 @@ namespace YesDay
             app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
-
+            app.UseStaticFiles();
         }
     }
 }

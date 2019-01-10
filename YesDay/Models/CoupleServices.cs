@@ -51,7 +51,7 @@ namespace YesDay.Models
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
         {
             var temp = Userref();   //Hämta parets id tilldela userref för att mappa gäst mot par
-
+            
             Guest guest = new Guest()
             {
                 Firstname = newGuestVM.Firstname,
