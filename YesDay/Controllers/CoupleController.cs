@@ -41,5 +41,18 @@ namespace YesDay.Controllers
             return RedirectToAction(nameof(GuestList));
         }
 
+        [HttpGet]
+        public IActionResult Overview()
+        {
+            return View();
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await coupleServices.LogoutAsync();
+            return RedirectToAction("Index", "Public");
+        }
     }
 }

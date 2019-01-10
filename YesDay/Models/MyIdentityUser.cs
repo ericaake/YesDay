@@ -11,6 +11,6 @@ namespace YesDay.Models
         public string FirstName1 { get; set; }
         public string FirstName2 { get; set; }
         public DateTime WeddingDate { get; set; }
-        public int Budget { get; set; }
+        public decimal Budget { get; set; }
     }
 }

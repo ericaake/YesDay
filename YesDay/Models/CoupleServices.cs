@@ -48,19 +48,6 @@ namespace YesDay.Models
                 .ToArray();
         }
 
-        internal async Task<IdentityResult> RegisterUserAsync(PublicSignUpVM newCouple)
-        {
-            return await userManager.CreateAsync(
-                new MyIdentityUser
-                {
-                    Email = newCouple.Email,
-                    FirstName1 = newCouple.FirstName1,
-                    FirstName2 = newCouple.FirstName2,
-                    WeddingDate = newCouple.WeddingDate
-                },
-                newCouple.Password);
-        }
-
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
         {
             Guest guest = new Guest()
@@ -81,5 +68,35 @@ namespace YesDay.Models
             context.SaveChanges();
 
         }
+
+        internal async Task<IdentityResult> RegisterUserAsync(PublicSignUpVM newCouple)
+        {
+            return await userManager.CreateAsync(
+                new MyIdentityUser
+                {
+                    UserName = newCouple.Email,
+                    Email = newCouple.Email,
+                    FirstName1 = newCouple.FirstName1,
+                    FirstName2 = newCouple.FirstName2,
+                    WeddingDate = newCouple.WeddingDate
+                },
+                newCouple.Password);
+        }
+
+        internal async Task<SignInResult> LoginInUserAsync(PublicLogInVM couple)
+        {
+            return await signInManager.PasswordSignInAsync(
+                 couple.UserName,
+                 couple.Password,
+                 false,
+                 false);
+        }
+
+        internal async System.Threading.Tasks.Task LogoutAsync()
+        {
+            await signInManager.SignOutAsync();
+
+        }
+
     }
 }
