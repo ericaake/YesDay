@@ -39,10 +39,10 @@ namespace YesDay.Controllers
             if (!ModelState.IsValid)
                 return View(newGuestVM);
 
-            if ()
-            {
+            //if ()
+            //{
 
-            }
+            //}
 
             coupleServices.AddNewGuest(newGuestVM);
             return RedirectToAction(nameof(GuestList));

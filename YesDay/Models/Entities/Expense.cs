@@ -10,6 +10,5 @@ namespace YesDay.Models.Entities
         public string Item { get; set; }
         public decimal? EstimatedCost { get; set; }
         public decimal? ActualCost { get; set; }
-
     }
 }

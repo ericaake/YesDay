@@ -17,6 +17,5 @@ namespace YesDay.Models.Entities
         public string Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
-
     }
 }
