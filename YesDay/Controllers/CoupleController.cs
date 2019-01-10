@@ -48,8 +48,14 @@ namespace YesDay.Controllers
             return View(coupleServices.GetChecklist());
         }
 
+        [HttpGet]
+        public IActionResult AddTask()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public IActionResult AddTaskToChecklist(CoupleAddNewTaskVM newTaskVM)
+        public IActionResult AddTask(CoupleAddNewTaskVM newTaskVM)
         {
             if (!ModelState.IsValid)
                 return View(newTaskVM);
