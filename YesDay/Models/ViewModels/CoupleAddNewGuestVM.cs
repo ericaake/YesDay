@@ -7,7 +7,6 @@ namespace YesDay.Models.ViewModels
 {
     public class CoupleAddNewGuestVM
     {
-        //Kom ihåg att lägga till UserRef också i denna. 
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Address { get; set; }
@@ -18,5 +17,7 @@ namespace YesDay.Models.ViewModels
         public string Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
+        public string Userref { get; set; }
+
     }
 }
