@@ -15,7 +15,7 @@ namespace YesDay.Models.Entities
         {
         }
 
-      
+
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<Guest> Guest { get; set; }
         public virtual DbSet<Task> Task { get; set; }
@@ -25,14 +25,14 @@ namespace YesDay.Models.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
+           
             modelBuilder.Entity<Expense>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -49,13 +49,12 @@ namespace YesDay.Models.Entities
                     .IsRequired()
                     .HasMaxLength(450);
 
-               
             });
 
             modelBuilder.Entity<Guest>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Guest__A9D10534D84A0EE8")
+                    .HasName("UQ__Guest__A9D10534BF7D6C01")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -104,6 +103,8 @@ namespace YesDay.Models.Entities
 
                 entity.Property(e => e.TaskNote).HasMaxLength(250);
 
+                entity.Property(e => e.TaskStatus).HasMaxLength(50);
+
                 entity.Property(e => e.Userref)
                     .IsRequired()
                     .HasMaxLength(450);
@@ -124,7 +125,6 @@ namespace YesDay.Models.Entities
                     .IsRequired()
                     .HasMaxLength(450);
 
-         
             });
         }
     }
