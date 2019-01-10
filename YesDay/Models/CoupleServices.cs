@@ -18,7 +18,7 @@ namespace YesDay.Models
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
-            RoleManager<IdentityRole> roleManager, 
+            RoleManager<IdentityRole> roleManager,
             YesDayContext context)
         {
             this.userManager = userManager;
@@ -77,7 +77,7 @@ namespace YesDay.Models
                 Rsvp = newGuestVM.Rsvp,
                 FoodPreference = newGuestVM.FoodPreference,
                 GuestNote = newGuestVM.GuestNote,
-                Userref = newGuestVM.Userref
+                Userref = temp
 
             };
             context.Guest.Add(guest);
@@ -91,6 +91,39 @@ namespace YesDay.Models
         }
 
 
-        //public CoupleChecklistVM[] Get        //Lägger till progress-kolumn i task schema
+        public CoupleChecklistVM[] GetChecklist()
+        {
+            var temp = Userref();
+            return context.Task
+                .Select(r => new CoupleChecklistVM()
+                {
+                    TaskDescription = r.TaskDescription,
+                    DueDate = r.DueDate,
+                    TaskNote = r.TaskNote,
+                    TaskStatus = r.TaskStatus,
+                    Userref = temp
+                    
+                })
+                .ToArray();
+        }
+
+        public void AddNewTask(CoupleAddNewTaskVM newTaskVM)
+        {
+            var temp = Userref();
+            Entities.Task task = new Entities.Task()
+            {
+                TaskDescription = newTaskVM.TaskDescription,
+                DueDate = newTaskVM.DueDate,
+                TaskNote = newTaskVM.TaskNote,
+                TaskStatus = newTaskVM.TaskStatus,
+                Userref = temp
+
+            };
+
+            context.Task.Add(task);
+            context.SaveChanges();
+
+        }
+
     }
 }

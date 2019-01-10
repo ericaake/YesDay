@@ -1,5 +1,9 @@
 ﻿@model CoupleAddNewGuestVM
 
+@{
+    ViewData["Title"] = "Lägg till ny gäst";
+}
+
 
 <br />
 <form asp-controller="Couple" asp-action="AddGuest">
@@ -16,7 +20,7 @@
         <input asp-for="Address" />
         <br />
         <label asp-for="Email"></label>
-        <input  asp-for="Email"  />
+        <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
         <br />
     </div>
