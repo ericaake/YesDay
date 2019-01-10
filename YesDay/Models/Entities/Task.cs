@@ -10,6 +10,5 @@ namespace YesDay.Models.Entities
         public string TaskDescription { get; set; }
         public DateTime? DueDate { get; set; }
         public string TaskNote { get; set; }
-
     }
 }
