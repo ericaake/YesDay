@@ -17,15 +17,18 @@
                     <div class="nav-toggle-bar"></div>
                 </div>
                 <nav class="nav">
-                    <ul>
-                        <li class="nav-item"><a class="nav-link" asp-controller="couple" asp-action="guestlist">Guestlist</a></li>
-                        <a asp-controller="Couple" asp-action="GuestList">Gästlista</a>
-                        <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
-                        <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
-                        <li><a href="www.google.se">Budget</a></li>
-                        <li><a href="#">Inställningar</a></li>
-                        <li><a asp-controller="public" asp-action="logout">Logga ut</a></li>
-                    </ul>
+                    <form>
+                        <ul>
+
+                            <li><a asp-controller="couple" asp-action="guestlist">Guestlist</a></li>
+                            <li><a asp-controller="Couple" asp-action="GuestList">Gästlista</a></li>
+                            <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
+                            <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
+                            <li><a href="www.google.se">Budget</a></li>
+                            <li><a href="#">Inställningar</a></li>
+                            <li><a asp-controller="public" asp-action="logout">Logga ut</a></li>
+                        </ul>
+                    </form>
                 </nav>
                 <script>
                     (function () {
@@ -42,7 +45,7 @@
                         };
 
                         hamburger.navToggle.addEventListener('click', function (e) { hamburger.doToggle(e); });
-                        hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
+                        //hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
 
                     }());
                 </script>
