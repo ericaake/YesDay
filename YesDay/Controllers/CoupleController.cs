@@ -54,5 +54,29 @@ namespace YesDay.Controllers
             await coupleServices.LogoutAsync();
             return RedirectToAction("Index", "Public");
         }
+
+        [HttpGet]
+        public IActionResult Checklist()
+        {
+            return View(coupleServices.GetChecklist());
+        }
+
+        [HttpGet]
+        public IActionResult AddTask()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddTask(CoupleAddNewTaskVM newTaskVM)
+        {
+            if (!ModelState.IsValid)
+                return View(newTaskVM);
+
+            coupleServices.AddNewTask(newTaskVM);
+            return RedirectToAction(nameof(Checklist));
+        }
+
+
     }
 }

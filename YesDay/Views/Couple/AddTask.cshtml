@@ -1,0 +1,27 @@
+﻿@model CoupleAddNewTaskVM
+@{
+    ViewData["Title"] = "AddTask";
+}
+
+<h2>AddTask</h2>
+
+<form asp-controller="Couple" asp-action="AddTask">
+    <div>
+
+        <label asp-for="TaskDescription"></label>
+        <input asp-for="TaskDescription" />
+        <span asp-validation-for="TaskDescription"></span>
+        <br />
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" />
+        <br />
+        <label asp-for="TaskNote"></label>
+        <input asp-for="TaskNote" />
+        <br />
+        <label asp-for="TaskStatus"></label>
+        <input asp-for="TaskStatus" />
+        <br />
+    </div>
+    <input class="btn btn-light" type="submit" value="Spara" />
+    <br /><br />
+</form>
