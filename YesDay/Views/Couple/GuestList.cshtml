@@ -1,14 +1,24 @@
 ﻿@model CoupleGuestlistVM[]
 
 @{
-    ViewData["Title"] = "Gästlista";
+    ViewData["Title"] = "YesDay - Gästlista";
 }
 
-@foreach (var item in Model)
-{
-    <p>@item.Firstname</p>
+<form asp-controller="Couple" asp-action="AddGuest">
+    <input type="submit" value="Lägg till">
+</form>
 
-}
-
-
-<p>Test</p>
+    @foreach (var item in Model)
+    {
+        @item.Firstname
+        @item.Lastname
+        @item.Address
+        @item.Email
+        @item.InvitedBy
+        @item.GuestTitle
+        @item.WeddingCrewTitle
+        @item.Rsvp
+        @item.FoodPreference
+        @item.GuestNote
+        <br />
+    }
