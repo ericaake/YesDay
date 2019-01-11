@@ -142,5 +142,59 @@ namespace YesDay.Models
 
         }
 
+        public CoupleVendorVM[] ShowAllVendors()
+        {
+            return context.Vendor
+                .Select(r => new CoupleVendorVM()
+                {
+                   Service = r.Service,
+                   ContactInfo = r.ContactInfo,
+                   Userref = r.Userref
+                   
+                })
+                .ToArray();
+        }
+
+        public void AddNewVendor(CoupleAddNewVendorVM newVendorVM)
+        {
+            Vendor vendor = new Vendor()
+            {
+                Service = newVendorVM.Service,
+                ContactInfo = newVendorVM.ContactInfo,
+                Userref = Userref()
+            };
+
+            context.Vendor.Add(vendor);
+            context.SaveChanges();
+        }
+
+
+        public CoupleExpenseVM[] ShowAllExpenses()
+        {
+            return context.Expense
+                .Select(r => new CoupleExpenseVM
+                {
+                    Item = r.Item,
+                    EstimatedCost = r.EstimatedCost,
+                    ActualCost = r.ActualCost,
+                    Userref = r.Userref
+                })
+                .ToArray();
+        }
+
+
+        public void AddNewExpense(CoupleAddNewExpenseVM newExpenseVM)
+        {
+            Expense expense = new Expense()
+            {
+                Item = newExpenseVM.Item,
+                EstimatedCost = newExpenseVM.EstimatedCost,
+                ActualCost = newExpenseVM.ActualCost,
+                Userref = Userref()
+            };
+
+            context.Expense.Add(expense);
+            context.SaveChanges();
+        }
     }
 }

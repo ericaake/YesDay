@@ -1,0 +1,28 @@
+﻿@model CoupleAddNewExpenseVM
+@{
+    ViewData["Title"] = "YesDay - Budget";
+}
+
+<h2>AddExpense</h2>
+
+
+<form asp-controller="Couple" asp-action="AddExpense" method="post">
+    <div>
+        <p class="obligatorisk">(* = Obligatoriska fält)</p>
+
+        <label asp-for="Item"></label>
+        <input asp-for="Item" />
+        <span asp-validation-for="Item"></span>
+        <br />
+        <label asp-for="EstimatedCost"></label>
+        <input asp-for="EstimatedCost" />
+        <br />
+        <label asp-for="ActualCost"></label>
+        <input asp-for="ActualCost" />
+    </div>
+    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+
+    <br /><br />
+    <a href="/Couple/Expense">Avbryt</a>
+</form>

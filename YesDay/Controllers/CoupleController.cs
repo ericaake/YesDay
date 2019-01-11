@@ -39,7 +39,7 @@ namespace YesDay.Controllers
             if (!ModelState.IsValid)
                 return View(newGuestVM);
 
-            if (! string.IsNullOrEmpty(saveAdd))
+            if (!string.IsNullOrEmpty(saveAdd))
             {
                 coupleServices.AddNewGuest(newGuestVM);
                 return RedirectToAction(nameof(AddGuest));
@@ -97,6 +97,72 @@ namespace YesDay.Controllers
 
             return RedirectToAction(nameof(Checklist));
         }
+
+        [HttpGet]
+        public IActionResult Vendor()
+        {
+            return View(coupleServices.ShowAllVendors());
+        }
+
+
+        [HttpGet]
+        public IActionResult AddVendor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddVendor(CoupleAddNewVendorVM newVendorVM, string saveAdd, string saveCancel)
+        {
+            if (!ModelState.IsValid)
+                return View(newVendorVM);
+
+            if (!string.IsNullOrEmpty(saveAdd))
+            {
+                coupleServices.AddNewVendor(newVendorVM);
+                return RedirectToAction(nameof(AddVendor));
+            }
+            else if (!string.IsNullOrEmpty(saveCancel))
+            {
+                coupleServices.AddNewVendor(newVendorVM);
+                return RedirectToAction(nameof(Vendor));
+            }
+
+            return RedirectToAction(nameof(Vendor));
+        }
+
+        [HttpGet]
+        public IActionResult Expense()
+        {
+            return View(coupleServices.ShowAllExpenses());
+        }
+
+        [HttpGet]
+        public IActionResult AddExpense()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddExpense(CoupleAddNewExpenseVM newExpenseVM, string saveAdd, string saveCancel)
+        {
+            if (!ModelState.IsValid)
+                return View(newExpenseVM);
+
+            if (!string.IsNullOrEmpty(saveAdd))
+            {
+                coupleServices.AddNewExpense(newExpenseVM);
+                return RedirectToAction(nameof(AddExpense));
+            }
+            else if (!string.IsNullOrEmpty(saveCancel))
+            {
+                coupleServices.AddNewExpense(newExpenseVM);
+                return RedirectToAction(nameof(Expense));
+            }
+
+            return RedirectToAction(nameof(Expense));
+        }
+
 
 
     }

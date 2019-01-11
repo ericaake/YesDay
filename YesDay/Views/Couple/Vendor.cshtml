@@ -1,0 +1,17 @@
+﻿@model CoupleVendorVM[]
+@{
+    ViewData["Title"] = "YesDay - Leverantörstjänster";
+}
+
+<h2>Vendor</h2>
+
+
+@foreach (var item in Model)
+{
+    @item.Service
+    @item.ContactInfo
+}
+
+
+<a href="/couple/addvendor"><input type="submit" value="Lägg till"></a>
+

@@ -1,0 +1,18 @@
+﻿@model CoupleExpenseVM[]
+@{
+    ViewData["Title"] = "Expense";
+}
+
+<h2>Expense</h2>
+
+
+@foreach (var item in Model)
+{
+    @item.Item
+    @item.EstimatedCost
+    @item.ActualCost
+    <br />
+}
+<br />
+
+<a href="/couple/addexpense"><input type="submit" value="Lägg till"></a>
