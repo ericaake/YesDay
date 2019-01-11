@@ -9,7 +9,7 @@
     -o-transition: left 0.5s ease;
     transition: left 0.5s ease;
     background: #9fb8bf;
-    color: #515d61;
+    color: black;
     cursor: pointer;
     font-size: 2rem;
     height: 100vh;
@@ -89,7 +89,7 @@
     }
 
         .nav-toggle.expanded .nav-toggle-bar::after, .nav-toggle.expanded .nav-toggle-bar::before {
-            background: #515d61;
+            background: white;
             margin-top: 0;
         }
 

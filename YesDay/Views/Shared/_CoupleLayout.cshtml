@@ -27,6 +27,9 @@
                         <li><a asp-controller="couple" asp-action="expense">Budget</a></li>
                         <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
                         <li><a asp-controller="public" asp-action="logout">Logga ut</a></li>
+                        <li><a asp-controller="couple" asp-action="budget">Budget</a></li>
+                        <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
+                        <li><a asp-controller="Couple" asp-action="logout">Logga ut</a></li>
                     </ul>
                 </nav>
                 <script>
@@ -54,6 +57,10 @@
             </div>
 
             <div class="col">
+                <div id="daysremaining"></div>
+            </div>
+
+            <div class="col">
                 <form>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" asp-controller="Couple" asp-action="Logout" value="Logga ut" />
@@ -66,8 +73,20 @@
             @RenderBody()
         </div>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Couple/GetPartialView",
+                type: "GET",
+                success: function (result) {
+                    $("#daysremaining").html(result);
+                }
+            });
+            console.log("Final Count Down!");
+        });
+    </script>
 </body>
 </html>

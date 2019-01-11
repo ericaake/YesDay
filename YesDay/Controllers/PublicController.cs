@@ -67,7 +67,10 @@ namespace YesDay.Controllers
                 if (result.Succeeded)
                     return RedirectToAction("Overview", "Couple");
                 else
+                {
+                    ModelState.AddModelError(nameof(PublicLogInVM.Password), "Felaktigt lösenord");
                     return View(logInVM);
+                }
             }
 
         }
