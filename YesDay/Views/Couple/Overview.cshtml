@@ -1,3 +1,40 @@
 ﻿@model CoupleOverviewVM
 
-Översikten!!!
+<div class="container">
+    <div class="row">
+        <h3>Välkomna @Model.FirstName1 och @Model.FirstName2 !</h3>
+    </div>
+    <div class="row">
+        <p>Välj någon av funktionerna och börja planera er stora dag!</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a asp-controller="Couple" asp-action="guestlist">
+                <img src="~/Images/Gästlista.png" alt="Gästlista" style="width:75px;height:75px;" />
+            </a>
+        </div>
+        <div class="col">
+            <a asp-controller="Couple" asp-action="checklist">
+                <img src="~/Images/checklista.png" alt="Checklista" style="width:75px;height:75px;" />
+            </a>
+        </div>
+        <div class="col">
+            <a asp-controller="Couple" asp-action="vendor">
+                <img src="~/Images/levernatörer.png" alt="Leverantörer" style="width:75px;height:75px;" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a asp-controller="Couple" asp-action="budget">
+                <img src="~/Images/budget.png" alt="Budget" style="width:75px;height:75px;" />
+            </a>
+        </div>
+        <div class="col">
+            <img src="~/Images/inbjudanprel.png" alt="Inbjudan" style="width:75px;height:75px;" />
+        </div>
+        <div class="col">
+            <img src="~/Images/moodboard.png" alt="Moodboard" style="width:75px;height:75px;" />
+        </div>
+    </div>
+</div>

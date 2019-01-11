@@ -18,7 +18,18 @@ namespace YesDay.Controllers
         {
             this.coupleServices = services;
         }
+        [HttpGet]
+        public IActionResult GetPartialView()
+        {
+            var date = coupleServices.GetWeddingDate();
+            DateTime today = DateTime.Now;
+            CoupleGetPartialViewVM vM = new CoupleGetPartialViewVM
+            {
+                DaysRemaining = (date - today).Days.ToString()
+            };
+            return PartialView("_CountDownBox", vM);
 
+        }
         [HttpGet]
         public IActionResult GuestList()
         {
@@ -39,7 +50,7 @@ namespace YesDay.Controllers
             if (!ModelState.IsValid)
                 return View(newGuestVM);
 
-            if (! string.IsNullOrEmpty(saveAdd))
+            if (!string.IsNullOrEmpty(saveAdd))
             {
                 coupleServices.AddNewGuest(newGuestVM);
                 return RedirectToAction(nameof(AddGuest));
@@ -55,7 +66,13 @@ namespace YesDay.Controllers
         [HttpGet]
         public IActionResult Overview()
         {
-            return View();
+            var couple = coupleServices.GetUserById();
+            CoupleOverviewVM vM = new CoupleOverviewVM
+            {
+                FirstName1 = couple.FirstName1,
+                FirstName2 = couple.FirstName2
+            };
+            return View(vM);
 
         }
 
@@ -88,6 +105,36 @@ namespace YesDay.Controllers
             return RedirectToAction(nameof(Checklist));
         }
 
+        [HttpGet]
+        public IActionResult Settings()
+        {
+            var couple = coupleServices.GetUserById();
+            CoupleSettingVM vM = new CoupleSettingVM
+            {
+                FirstName1 = couple.FirstName1,
+                FirstName2 = couple.FirstName2,
+                Email = couple.Email,
+                Password = couple.PasswordHash,
+                WeddingDate = couple.WeddingDate
+            };
+            return View(vM);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Settings(CoupleSettingVM vM)
+        {
+            if (!ModelState.IsValid)
+                return View(vM);
+
+            else
+            {
+                var result = await coupleServices.UpdateUserAsync(vM);
+                if (result.Succeeded)
+                    return RedirectToAction(nameof(Overview));
+
+                else
+                    return View(vM);
+            }
+        }
     }
 }

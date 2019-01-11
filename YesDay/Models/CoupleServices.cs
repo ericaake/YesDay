@@ -16,19 +16,22 @@ namespace YesDay.Models
         RoleManager<IdentityRole> roleManager;
         YesDayContext context;
         IHttpContextAccessor httpContextAccessor;
+        MyIdentityContext identityContext;
 
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             YesDayContext context,
-            IHttpContextAccessor httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor,
+            MyIdentityContext identityContext)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.context = context;
             this.httpContextAccessor = httpContextAccessor;
+            this.identityContext = identityContext;
         }
 
         public CoupleGuestlistVM[] ShowAllGuests()
@@ -73,11 +76,43 @@ namespace YesDay.Models
             context.SaveChanges();
         }
 
+        public MyIdentityUser GetUserById()
+        {
+            var coupleId = Userref();
+            var couple = identityContext.Users
+                .Where(c => c.Id == coupleId)
+                .FirstOrDefault();
+            return couple;
+            
+        }
+
+        internal async Task<IdentityResult> UpdateUserAsync(CoupleSettingVM vM)
+        {
+            var coupleId = Userref();
+
+            MyIdentityUser user = identityContext.Users.SingleOrDefault(u => u.Id == coupleId);
+            user.FirstName1 = vM.FirstName1;
+            user.FirstName2 = vM.FirstName2;
+            user.WeddingDate = vM.WeddingDate;
+
+            return await userManager.UpdateAsync(user); 
+               
+        }
+
         public string Userref()
         {
             return userManager.GetUserId(httpContextAccessor.HttpContext.User);
         }
 
+        public DateTime GetWeddingDate()
+        {
+            var coupleId = Userref();
+            var date = identityContext.Users
+                .Where(c => c.Id == coupleId)
+                .Select(c => c.WeddingDate)
+                .FirstOrDefault();
+            return date;
+        }
 
         public CoupleChecklistVM[] GetChecklist()
         {
