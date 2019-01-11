@@ -34,17 +34,21 @@ namespace YesDay.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddGuest(CoupleAddNewGuestVM newGuestVM)
+        public IActionResult AddGuest(CoupleAddNewGuestVM newGuestVM, string saveAdd, string saveCancel)
         {
             if (!ModelState.IsValid)
                 return View(newGuestVM);
 
-            //if ()
-            //{
-
-            //}
-
-            coupleServices.AddNewGuest(newGuestVM);
+            if (! string.IsNullOrEmpty(saveAdd))
+            {
+                coupleServices.AddNewGuest(newGuestVM);
+                return RedirectToAction(nameof(AddGuest));
+            }
+            else if (!string.IsNullOrEmpty(saveCancel))
+            {
+                coupleServices.AddNewGuest(newGuestVM);
+                return RedirectToAction(nameof(GuestList));
+            }
             return RedirectToAction(nameof(GuestList));
         }
 
