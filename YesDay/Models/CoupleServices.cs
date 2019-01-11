@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,13 @@ namespace YesDay.Models
         RoleManager<IdentityRole> roleManager;
         YesDayContext context;
         IHttpContextAccessor httpContextAccessor;
+
+        SelectListItem[] taskStatus = new SelectListItem[]
+        {
+                new SelectListItem { Value="0", Text="Uppgift", Selected=true },
+                new SelectListItem { Value="1", Text="Påbörjad"},
+                new SelectListItem { Value="2", Text="Klar"}
+        };
 
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
@@ -78,10 +86,9 @@ namespace YesDay.Models
             return userManager.GetUserId(httpContextAccessor.HttpContext.User);
         }
 
-
         public CoupleChecklistVM[] GetChecklist()
         {
-           
+
             return context.Task
                 .Select(r => new CoupleChecklistVM()
                 {
@@ -97,15 +104,14 @@ namespace YesDay.Models
 
         public void AddNewTask(CoupleAddNewTaskVM newTaskVM)
         {
-            
+
             Entities.Task task = new Entities.Task()
             {
                 TaskDescription = newTaskVM.TaskDescription,
                 DueDate = newTaskVM.DueDate,
                 TaskNote = newTaskVM.TaskNote,
-                TaskStatus = newTaskVM.TaskStatus,
+                TaskStatus = newTaskVM.SelectedTaskStatus.ToString(),
                 Userref = Userref()
-
             };
 
             context.Task.Add(task);
@@ -139,8 +145,16 @@ namespace YesDay.Models
         internal async System.Threading.Tasks.Task LogoutAsync()
         {
             await signInManager.SignOutAsync();
-
         }
 
+        public CoupleAddNewTaskVM CreateViewModel()
+        {
+            CoupleAddNewTaskVM viewModel = new CoupleAddNewTaskVM
+            {
+                TaskStatus = taskStatus
+            };
+
+            return viewModel;
+        }
     }
 }

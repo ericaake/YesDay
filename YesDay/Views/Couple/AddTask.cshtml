@@ -7,22 +7,25 @@
 
 <form asp-controller="Couple" asp-action="AddTask" method="post">
     <div>
-
         <label asp-for="TaskDescription"></label>
         <input asp-for="TaskDescription" />
         <span asp-validation-for="TaskDescription"></span>
         <br />
+
         <label asp-for="DueDate"></label>
         <input asp-for="DueDate" />
         <br />
+
         <label asp-for="TaskNote"></label>
         <input asp-for="TaskNote" />
         <br />
+
         <label asp-for="TaskStatus"></label>
-        <input asp-for="TaskStatus" />
+        <select asp-for="SelectedTaskStatus" asp-items="Model.TaskStatus"></select>
         <br />
     </div>
 
+    <br />
     <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
     <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
 
