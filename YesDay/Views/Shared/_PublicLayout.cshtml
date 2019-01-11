@@ -17,12 +17,11 @@
                 <nav class="nav">
                     <ul>
                         <li><a asp-controller="couple" asp-action="overview">Översikt</a></li>
-                        <li><a asp-controller="couple" asp-action="guestlist">Gästlista</a></li>
+                        <li><a asp-controller="couple" asp-action="guestList">Gästlista</a></li>
                         <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
                         <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
-                        <li><a href="~/couple/guestlist">Test</a></li>
-                        <li><a href="#">Inställningar</a></li>
-                        <li><a asp-controller="public" asp-action="logout">Logga ut</a></li>
+                        <li><a asp-controller="couple" asp-action="budget">Budget</a></li>
+                        <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
                     </ul>
                 </nav>
                 <script>
@@ -40,7 +39,7 @@
                         };
 
                         hamburger.navToggle.addEventListener('click', function (e) { hamburger.doToggle(e); });
-                        hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
+                        //hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
 
                     }());
                 </script>
