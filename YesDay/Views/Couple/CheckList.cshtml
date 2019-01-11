@@ -1,0 +1,15 @@
+﻿@model CoupleChecklistVM[]
+@{
+    ViewData["Title"] = "Checklista";
+}
+
+<h2>CheckList</h2>
+
+@foreach (var item in Model)
+{
+    @item.TaskDescription
+    @item.DueDate
+    @item.TaskNote
+    @item.TaskStatus
+}
+

@@ -19,8 +19,8 @@ namespace YesDay.Models.ViewModels
         public string Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
+        public string Userref { get; set; }
 
-        //public CoupleAccount CouplerefNavigation { get; set; }
 
     }
 }

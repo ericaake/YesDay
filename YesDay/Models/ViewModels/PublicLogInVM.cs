@@ -6,28 +6,17 @@ using System.Threading.Tasks;
 
 namespace YesDay.Models.ViewModels
 {
-    public class PublicSignUpVM
+    public class PublicLogInVM
     {
         [Required]
         [Display(Name = "Ange e-post")]
         [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "Förnamn")]
-        public string FirstName1 { get; set; }
-
-        [Required]
-        [Display(Name = "Förnamn")]
-        public string FirstName2 { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Ange ett lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name ="Bröllopsdatum")]
-        [DataType(DataType.Date)]
-        public DateTime WeddingDate { get; set; }
     }
 }

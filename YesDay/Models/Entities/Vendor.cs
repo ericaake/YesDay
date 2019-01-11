@@ -9,5 +9,6 @@ namespace YesDay.Models.Entities
         public string Userref { get; set; }
         public string Service { get; set; }
         public string ContactInfo { get; set; }
+
     }
 }

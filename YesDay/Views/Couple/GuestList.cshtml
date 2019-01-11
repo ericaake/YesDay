@@ -1,8 +1,14 @@
 ﻿@model CoupleGuestlistVM[]
 
+@{
+    ViewData["Title"] = "Gästlista";
+}
 
 @foreach (var item in Model)
 {
-    <p>@item.Firstname[0]hej hej</p>
+    <p>@item.Firstname</p>
 
 }
+
+
+<p>Test</p>

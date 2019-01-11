@@ -1,1 +1,15 @@
-﻿<form asp-controller="Public" asp-action="Login"></form>
+﻿@model PublicLogInVM
+
+<form asp-controller="Public" asp-action="Login">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" />
+    <span asp-validation-for="UserName"></span>
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+
+    <input class="button" type="submit" value="Logga in" />
+
+</form>
+
