@@ -22,7 +22,7 @@ namespace YesDay.Models.ViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Display(Name = "Efternamn")]
+        [Display(Name = "Inbjuden av")]
         public string InvitedBy { get; set; }
 
         [Display(Name = "Gästtitel")]
@@ -37,7 +37,7 @@ namespace YesDay.Models.ViewModels
         [Display(Name = "Specialkost")]
         public string FoodPreference { get; set; }
 
-        [Display(Name = "Efternamn")]
+        [Display(Name = "Anteckningar")]
         public string GuestNote { get; set; }
 
         public string Userref { get; set; }

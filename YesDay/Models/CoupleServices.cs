@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,20 @@ namespace YesDay.Models
         SignInManager<MyIdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
         YesDayContext context;
+        IHttpContextAccessor httpContextAccessor;
 
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            YesDayContext context)
+            YesDayContext context,
+            IHttpContextAccessor httpContextAccessor)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.context = context;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public CoupleGuestlistVM[] ShowAllGuests()
@@ -50,8 +54,6 @@ namespace YesDay.Models
 
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
         {
-            var temp = Userref();   //Hämta parets id tilldela userref för att mappa gäst mot par
-            
             Guest guest = new Guest()
             {
                 Firstname = newGuestVM.Firstname,
@@ -64,23 +66,22 @@ namespace YesDay.Models
                 Rsvp = newGuestVM.Rsvp,
                 FoodPreference = newGuestVM.FoodPreference,
                 GuestNote = newGuestVM.GuestNote,
-                Userref = temp
-
+                Userref = Userref()
             };
+
             context.Guest.Add(guest);
             context.SaveChanges();
         }
 
         public string Userref()
         {
-            //var coupleId = userManager.GetUserId(userManager).ToString();
-            return null;
+            return userManager.GetUserId(httpContextAccessor.HttpContext.User);
         }
 
 
         public CoupleChecklistVM[] GetChecklist()
         {
-            var temp = Userref();
+           
             return context.Task
                 .Select(r => new CoupleChecklistVM()
                 {
@@ -88,22 +89,22 @@ namespace YesDay.Models
                     DueDate = r.DueDate,
                     TaskNote = r.TaskNote,
                     TaskStatus = r.TaskStatus,
-                    Userref = temp
-                    
+                    Userref = Userref()
+
                 })
                 .ToArray();
         }
 
         public void AddNewTask(CoupleAddNewTaskVM newTaskVM)
         {
-            var temp = Userref();
+            
             Entities.Task task = new Entities.Task()
             {
                 TaskDescription = newTaskVM.TaskDescription,
                 DueDate = newTaskVM.DueDate,
                 TaskNote = newTaskVM.TaskNote,
                 TaskStatus = newTaskVM.TaskStatus,
-                Userref = temp
+                Userref = Userref()
 
             };
 

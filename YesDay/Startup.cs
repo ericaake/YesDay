@@ -33,9 +33,11 @@ namespace YesDay
             .AddEntityFrameworkStores<MyIdentityContext>()
             .AddDefaultTokenProviders();
 
-            services.ConfigureApplicationCookie(o => o.LoginPath = "/Couple/login");
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Couple/login");
+            services.ConfigureApplicationCookie(o => o.LoginPath = "/Public/login");
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => o.LoginPath = "/Public/login");
             services.AddTransient<CoupleServices>();
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +46,6 @@ namespace YesDay
             app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
-            app.UseStaticFiles();
         }
     }
 }

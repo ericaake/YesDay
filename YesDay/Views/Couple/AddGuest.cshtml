@@ -1,13 +1,13 @@
 ﻿@model CoupleAddNewGuestVM
 
 @{
-    ViewData["Title"] = "Lägg till ny gäst";
+    ViewData["Title"] = "YesDay - Lägg till ny gäst";
 }
 
-
 <br />
-<form asp-controller="Couple" asp-action="AddGuest">
+<form asp-controller="Couple" asp-action="AddGuest" method="post">
     <div>
+        <p class="obligatorisk">(* = Obligatoriska fält)</p>
 
         <label asp-for="Firstname"></label>
         <input asp-for="Firstname" />
@@ -15,6 +15,7 @@
         <br />
         <label asp-for="Lastname"></label>
         <input asp-for="Lastname" />
+        <span asp-validation-for="Lastname"></span>
         <br />
         <label asp-for="Address"></label>
         <input asp-for="Address" />
@@ -23,7 +24,22 @@
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
         <br />
+        <label asp-for="InvitedBy"></label>
+        <input asp-for="InvitedBy" />
+        <br />
+        <label asp-for="GuestTitle"></label>
+        <input asp-for="GuestTitle" />
+        <br />
+        <label asp-for="WeddingCrewTitle"></label>
+        <input asp-for="WeddingCrewTitle" />
+        <br />
+        <label asp-for="GuestNote"></label>
+        <textarea asp-for="GuestNote" rows="10"></textarea>
     </div>
-    <input class="btn btn-light" type="submit" value="Spara" />
+    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng"/>
+    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+
     <br /><br />
+    <a href="/Couple/GuestList">Avbryt</a>
 </form>
+

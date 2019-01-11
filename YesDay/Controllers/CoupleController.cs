@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YesDay.Models;
 using YesDay.Models.ViewModels;
 
 namespace YesDay.Controllers
 {
+    [Authorize]
     public class CoupleController : Controller
     {
         CoupleServices coupleServices;
@@ -32,12 +34,21 @@ namespace YesDay.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddGuest(CoupleAddNewGuestVM newGuestVM)
+        public IActionResult AddGuest(CoupleAddNewGuestVM newGuestVM, string saveAdd, string saveCancel)
         {
             if (!ModelState.IsValid)
                 return View(newGuestVM);
 
-            coupleServices.AddNewGuest(newGuestVM);
+            if (! string.IsNullOrEmpty(saveAdd))
+            {
+                coupleServices.AddNewGuest(newGuestVM);
+                return RedirectToAction(nameof(AddGuest));
+            }
+            else if (!string.IsNullOrEmpty(saveCancel))
+            {
+                coupleServices.AddNewGuest(newGuestVM);
+                return RedirectToAction(nameof(GuestList));
+            }
             return RedirectToAction(nameof(GuestList));
         }
 
