@@ -9,11 +9,11 @@ namespace YesDay.Models.ViewModels
     public class CoupleAddNewGuestVM
     {
         [Display(Name ="Förnamn *")]
-        [Required(ErrorMessage = "Vängligen ange förnamn")]
+        [Required(ErrorMessage = "Vänligen ange förnamn")]
         public string Firstname { get; set; }
 
         [Display(Name = "Efternamn *")]
-        [Required(ErrorMessage = "Vängligen ange efternamn")]
+        [Required(ErrorMessage = "Vänligen ange efternamn")]
         public string Lastname { get; set; }
 
         [Display(Name = "Adress")]

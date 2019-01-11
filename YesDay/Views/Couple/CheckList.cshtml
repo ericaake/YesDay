@@ -4,34 +4,66 @@
     ViewData["Title"] = "YesDay - Checklista";
 }
 <script>
-    $(document).ready(function () {
-        function allowDrop(ev) {
-            ev.preventDefault();
-        }
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
 
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.targetId);
-        }
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
 
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
 
 
-    })
 </script>
 
-<h2>CheckList</h2>
+<h2>Checklista</h2>
 
-@foreach (var item in Model)
-{
-<p id="ChecklistItem" draggable="true" ondragstart="drag(event)">
-    @item.TaskDescription
-    @item.DueDate
-</p>
-   
-}
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h3>Att göra</h3>
+        </div>
+        <div class="col-4">
+            <h3>Pågående</h3>
 
-<div id="checklistbox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="col-4">
+            <h3>Klart</h3>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div id="checklistbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+                @foreach (var item in Model)
+                {
+
+                    <p id="@item.TaskDescription" draggable="true" ondragstart="drag(event)">
+                        @item.TaskDescription
+                        @item.DueDate.Value.ToShortDateString()
+                    </p>
+
+                }
+            </div>
+            </div>
+            <div class="col-4">
+                <div id="checklistbox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="col-4">
+                <div id="checklistbox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <form asp-controller="Couple" asp-action="AddTask">
+        <input type="submit" value="Lägg till">
+    </form>
+

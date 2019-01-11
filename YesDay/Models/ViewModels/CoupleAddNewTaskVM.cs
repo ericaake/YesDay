@@ -14,7 +14,6 @@ namespace YesDay.Models.ViewModels
 
         [Display(Name = "Slutdatum")]
         [DataType(DataType.Date)]
-        [Range(10,10)]
         public DateTime? DueDate { get; set; }
 
         [Display(Name = "Anteckningar")]
