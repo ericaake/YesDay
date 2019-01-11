@@ -1,15 +1,37 @@
 ﻿@model CoupleChecklistVM[]
+
 @{
     ViewData["Title"] = "YesDay - Checklista";
 }
+<script>
+    $(document).ready(function () {
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.targetId);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+
+    })
+</script>
 
 <h2>CheckList</h2>
 
 @foreach (var item in Model)
 {
+<p id="ChecklistItem" draggable="true" ondragstart="drag(event)">
     @item.TaskDescription
     @item.DueDate
-    @item.TaskNote
-    @item.TaskStatus
+</p>
+   
 }
 
+<div id="checklistbox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>

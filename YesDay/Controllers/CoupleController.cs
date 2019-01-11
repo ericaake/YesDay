@@ -49,7 +49,7 @@ namespace YesDay.Controllers
                 coupleServices.AddNewGuest(newGuestVM);
                 return RedirectToAction(nameof(GuestList));
             }
-            return RedirectToAction(nameof(GuestList));
+            return RedirectToAction(nameof(GuestList));  //redirect to something went wrong
         }
 
         [HttpGet]
@@ -79,12 +79,22 @@ namespace YesDay.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTask(CoupleAddNewTaskVM newTaskVM)
+        public IActionResult AddTask(CoupleAddNewTaskVM newTaskVM, string saveAdd, string saveCancel)
         {
             if (!ModelState.IsValid)
                 return View(newTaskVM);
 
-            coupleServices.AddNewTask(newTaskVM);
+            if (!string.IsNullOrEmpty(saveAdd))
+            {
+                coupleServices.AddNewTask(newTaskVM);
+                return RedirectToAction(nameof(AddTask));
+            }
+            else if (!string.IsNullOrEmpty(saveCancel))
+            {
+                coupleServices.AddNewTask(newTaskVM);
+                return RedirectToAction(nameof(Checklist));
+            }
+
             return RedirectToAction(nameof(Checklist));
         }
 
