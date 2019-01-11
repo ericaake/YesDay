@@ -7,18 +7,29 @@
 <form asp-controller="Couple" asp-action="AddGuest">
     <input type="submit" value="Lägg till">
 </form>
+<table>
 
-    @foreach (var item in Model)
-    {
-        @item.Firstname
-        @item.Lastname
-        @item.Address
-        @item.Email
-        @item.InvitedBy
-        @item.GuestTitle
-        @item.WeddingCrewTitle
-        @item.Rsvp
-        @item.FoodPreference
-        @item.GuestNote
-        <br />
-    }
+    <thead>
+        <tr>
+            <th>Förnamn</th><th>Efternamn</th><th>Adress</th><th>Epost</th><th>Inbjuden av</th><th>Gästtitel</th><th>Bröllopsroll</th><th>OSA</th><th>Specialkost</th><th>Anteckningar</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Firstname</td>
+            <td>@item.Lastname</td>
+            <td>@item.Address</td>
+            <td>@item.Email</td>
+            <td>@item.InvitedBy</td>
+            <td>@item.GuestTitle</td>
+            <td>@item.WeddingCrewTitle</td>
+            <td>@item.Rsvp</td>
+            <td>@item.FoodPreference</td>
+            <td>@item.GuestNote</td>
+        </tr>
+        }
+    </tbody>
+</table>
