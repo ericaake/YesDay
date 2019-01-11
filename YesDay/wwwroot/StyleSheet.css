@@ -34,7 +34,9 @@
         margin: 0;
         padding: 0;
     }
-
+    .nav a{
+        color: white;
+    }
 .nav-toggle {
     -webkit-user-select: none;
     -moz-user-select: none;
