@@ -12,5 +12,6 @@ namespace YesDay.Models.ViewModels
         public string Item { get; set; }
         public decimal? EstimatedCost { get; set; }
         public decimal? ActualCost { get; set; }
+        public decimal SumAllCost { get; set; }
     }
 }

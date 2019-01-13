@@ -3,16 +3,30 @@
     ViewData["Title"] = "Expense";
 }
 
-<h2>Expense</h2>
+<h2>Budget</h2>
 
 
-@foreach (var item in Model)
-{
-    @item.Item
-    @item.EstimatedCost
-    @item.ActualCost
-    <br />
-}
-<br />
 
 <a href="/couple/addexpense"><input type="submit" value="Lägg till"></a>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Förnamn</th>
+            <th>Beräknad kostnad</th>
+            <th>Faktisk kostnad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Item</td>
+                <td>@item.EstimatedCost</td>
+                <td>@item.ActualCost</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
