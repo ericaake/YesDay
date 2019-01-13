@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace YesDay.Models.ViewModels
         public string TaskNote { get; set; }
 
         [Display(Name = "Status")]
-        public string TaskStatus { get; set; }
+        public SelectListItem[] TaskStatus { get; set; }
+
+        public int SelectedTaskStatus { get; set; }
 
         public string Userref { get; set; }
-
-
     }
 }

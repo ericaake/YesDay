@@ -92,7 +92,8 @@ namespace YesDay.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
-            return View();
+            var vm = coupleServices.CreateViewModel();
+            return View(vm);
         }
 
         [HttpPost]
