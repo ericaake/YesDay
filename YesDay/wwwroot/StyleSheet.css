@@ -1,5 +1,11 @@
 ﻿body {
     background-color´: white;
+    color: #515D61;
+    font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+    color: #9fb8bf;
 }
 
 .nav {
@@ -46,7 +52,7 @@
     height: 1rem;
     left: 1rem;
     position: fixed;
-    top: 1rem;
+    top: 1.7rem;
     width: 2rem;
     z-index: 2;
 }
@@ -66,7 +72,7 @@
         -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
-        background: #515d61;
+        background: #9fb8bf;
         content: '';
         height: 0.4rem;
         width: 100%;

@@ -10,11 +10,12 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="~/StyleSheet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col" style="width:5px; height:68px">
                 <div class="nav-toggle">
                     <div class="nav-toggle-bar"></div>
                 </div>
@@ -27,9 +28,6 @@
                         <li><a asp-controller="couple" asp-action="expense">Budget</a></li>
                         <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
                         <li><a asp-controller="public" asp-action="logout">Logga ut</a></li>
-                        <li><a asp-controller="couple" asp-action="budget">Budget</a></li>
-                        <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
-                        <li><a asp-controller="Couple" asp-action="logout">Logga ut</a></li>
                     </ul>
                 </nav>
                 <script>
@@ -51,27 +49,26 @@
 
                     }());
                 </script>
-            </div>
-            <div class="col">
-                <h4>YesDay</h4>
-            </div>
-
-            <div class="col">
-                <div id="daysremaining"></div>
+                <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" />
+                @*<h3 style="font-family: 'Lobster', cursive;">YesDay</h3>*@
             </div>
 
-            <div class="col">
+            <div class="col" style="margin-top:10px">
+                <div id="daysremaining" style="font-family: 'Roboto', sans-serif; color:#9Fb8Bf; margin-top:15px"></div>
+            </div>
+
+            <div class="col" style="margin-top:10px;">
                 <form>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" asp-controller="Couple" asp-action="Logout" value="Logga ut" />
+                        <input class="btn btn-light" style="color:#9Fb8Bf" type="submit" asp-controller="Couple" asp-action="Logout" value="Logga ut" />
                     </div>
                 </form>
 
             </div>
         </div>
-        <div>
-            @RenderBody()
-        </div>
+    </div>
+    <div>
+        @RenderBody()
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
