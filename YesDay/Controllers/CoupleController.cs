@@ -270,5 +270,13 @@ namespace YesDay.Controllers
 
             return RedirectToAction(nameof(Expense));
         }
+
+        [HttpPost]
+        public IActionResult DeleteExpense(int id)
+        {
+            coupleServices.DeleteExpense(id);
+            return RedirectToAction(nameof(Expense));
+        }
+
     }
 }

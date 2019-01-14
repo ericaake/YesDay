@@ -25,6 +25,7 @@
                         <th scope="col">Beräknad kostnad</th>
                         <th scope="col">Faktisk kostnad</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,12 @@
                             <td>@item.EstimatedCost</td>
                             <td>@item.ActualCost</td>
                             <td> <a asp-controller="Couple" asp-action="UpdateExpense" asp-route-id="@item.Id">Uppdatera</a></td>
+                            @*<td> <a asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id" method="post">Ta bort</a></td>*@
+                            <td> 
+                            <form asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id">
+                                <input type="submit" class="btn btn-light" value="Ta bort" />
+                            </form>
+                                </td>
                         </tr>
                     }
                 </tbody>
