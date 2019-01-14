@@ -5,7 +5,23 @@
 }
 
 h3 {
+    color: #515D61;
+    font-family: 'Lobster', cursive;
+}
+
+a {
     color: #9fb8bf;
+}
+
+.container {
+    width:100%;
+    padding-left:0;
+    padding-right:0;
+}
+
+.col, .col-10 {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .nav {

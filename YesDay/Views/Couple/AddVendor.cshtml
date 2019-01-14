@@ -3,23 +3,43 @@
     ViewData["Title"] = "YesDay - Leverantörstjänster";
 }
 
-<h2>Leverantörstjänster</h2>
-
-<form asp-controller="Couple" asp-action="AddVendor" method="post">
-    <div>
-
-        <label asp-for="Service"></label>
-        <input asp-for="Service" />
-        <span asp-validation-for="Service"></span>
-        <br />
-        <label asp-for="ContactInfo"></label>
-        <textarea asp-for="ContactInfo" rows="10"></textarea>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Leverantörstjänster</h3>
+        </div>
     </div>
+    <form asp-controller="Couple" asp-action="AddVendor" method="post">
+        <div class="row">
 
-    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+            <div class="col-3">
+                <label asp-for="Service"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="Service" />
+                <span asp-validation-for="Service"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label asp-for="ContactInfo"></label>
+            </div>
+            <div class="col-3">
+                <textarea asp-for="ContactInfo" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div clas="col-3">
+                <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+                <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
 
-    <br />
+            </div>
+        </div>
+    </form>
+</div>
 
-    <a href="/Couple/Checklist">Avbryt</a>
-</form>
+
+
+
+
+<a asp-controller="Couple" asp-action="Vendor">Avbryt</a>

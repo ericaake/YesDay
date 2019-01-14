@@ -150,6 +150,31 @@ namespace YesDay.Controllers
         }
 
         [HttpGet]
+        public IActionResult UpdateVendor(int id)
+        {
+            return View(coupleServices.GetVendorForUpdate(id));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateVendor(CoupleUpdateVendorVM vM)
+        {
+            if (!ModelState.IsValid)
+                return View(vM);
+            coupleServices.UpdateVendor(vM);
+
+            return RedirectToAction(nameof(Vendor));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteVendor(int id)
+        {
+            coupleServices.DeleteVendor(id);
+            //return View(coupleServices.ShowAllVendors());
+            return RedirectToAction(nameof(Vendor));
+        }
+
+
+        [HttpGet]
         public IActionResult Expense()
         {
             return View(coupleServices.ShowAllExpenses());

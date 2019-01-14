@@ -1,0 +1,24 @@
+﻿@model CoupleUpdateVendorVM
+@{
+    ViewData["Title"] = "Uppdatera Leverantör";
+}
+
+<h3 style="font-family: 'Lobster', cursive;">Uppdatera leverantör</h3>
+
+<form asp-controller="Couple" asp-action="UpdateVendor" method="post">
+    <div>
+
+        <label asp-for="Service"></label>
+        <input asp-for="Service" />
+        <span asp-validation-for="Service"></span>
+        <br />
+        <label asp-for="ContactInfo"></label>
+        <textarea asp-for="ContactInfo" rows="10"></textarea>
+    </div>
+
+    <input class="btn btn-light" type="submit" value="Uppdatera" />
+
+    <br />
+
+    <a href="/Couple/Vendor">Avbryt</a>
+</form>

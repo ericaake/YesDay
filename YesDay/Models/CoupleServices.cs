@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +92,7 @@ namespace YesDay.Models
                 .Where(c => c.Id == coupleId)
                 .FirstOrDefault();
             return couple;
-            
+
         }
 
         internal async Task<IdentityResult> UpdateUserAsync(CoupleSettingVM vM)
@@ -103,8 +104,8 @@ namespace YesDay.Models
             user.FirstName2 = vM.FirstName2;
             user.WeddingDate = vM.WeddingDate;
 
-            return await userManager.UpdateAsync(user); 
-               
+            return await userManager.UpdateAsync(user);
+
         }
 
         public string Userref()
@@ -189,10 +190,10 @@ namespace YesDay.Models
             return context.Vendor
                 .Select(r => new CoupleVendorVM()
                 {
-                   Service = r.Service,
-                   ContactInfo = r.ContactInfo,
-                   Userref = r.Userref
-                   
+                    Id = r.Id,
+                    Service = r.Service,
+                    ContactInfo = r.ContactInfo,
+                    Userref = r.Userref
                 })
                 .ToArray();
         }
@@ -207,6 +208,39 @@ namespace YesDay.Models
             };
 
             context.Vendor.Add(vendor);
+            context.SaveChanges();
+        }
+
+        public CoupleUpdateVendorVM GetVendorForUpdate(int id)
+        {
+            Vendor vendor = context.Vendor.SingleOrDefault(v => v.Id == id);
+
+            return new CoupleUpdateVendorVM()
+            {
+                Id = vendor.Id,
+                Service = vendor.Service,
+                ContactInfo = vendor.ContactInfo,
+                Userref = Userref()
+            };
+        }
+
+        public void UpdateVendor(CoupleUpdateVendorVM updateVendor)
+        {
+            Vendor vendor = context.Vendor.SingleOrDefault(v => v.Id == updateVendor.Id);
+
+            vendor.Service = updateVendor.Service;
+            vendor.ContactInfo = updateVendor.ContactInfo;
+            context.SaveChanges();
+        }
+
+        public void DeleteVendor(int id)
+        {
+            Vendor vendor = new Vendor
+            {
+                Id = id
+            };
+
+            context.Entry(vendor).State = EntityState.Deleted;
             context.SaveChanges();
         }
 

@@ -3,15 +3,52 @@
     ViewData["Title"] = "YesDay - Leverantörstjänster";
 }
 
-<h2>Vendor</h2>
+<div class="container">
+    <div class="row" style="padding-top:35px;">
+        <div class="col">
+            <h3 style="font-family: 'Lobster', cursive;">Leverantörer</h3><br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="/couple/addvendor"><input class="btn btn-light" type="submit" value="Lägg till"></a><br/><br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Företagsnamn/tjänst</th>
+                        <th scope="col">Kontaktinfo</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Service</td>
+                            <td>@item.ContactInfo</td>
+                            <td>
+                                <a asp-controller="Couple" asp-action="UpdateVendor" asp-route-id="@item.Id">
+                                    Uppdatera
+                                </a>
+                            </td>
+                            <td>
+                                <form asp-controller="Couple" asp-action="DeleteVendor" asp-route-id="@item.Id">
+                                    <input type="submit" class="btn btn-light"  value="Ta bort" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
-@foreach (var item in Model)
-{
-    @item.Service
-    @item.ContactInfo
-}
 
-
-<a href="/couple/addvendor"><input type="submit" value="Lägg till"></a>
 
