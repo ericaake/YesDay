@@ -128,6 +128,7 @@ namespace YesDay.Models
             return context.Task
                 .Select(r => new CoupleChecklistVM()
                 {
+                    Id = r.Id,
                     TaskDescription = r.TaskDescription,
                     DueDate = r.DueDate,
                     TaskNote = r.TaskNote,
