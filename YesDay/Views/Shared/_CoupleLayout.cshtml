@@ -50,7 +50,8 @@
                     }());
                 </script>
                 <a asp-controller="Couple" asp-action="overview">
-                <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" /></a>
+                    <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" />
+                </a>
                 @*<h3 style="font-family: 'Lobster', cursive;">YesDay</h3>*@
             </div>
 
@@ -67,9 +68,15 @@
 
             </div>
         </div>
-    </div>
-    <div>
-        @RenderBody()
+        <div class="row">
+           <div class="col"></div>
+            <div class="col-10">
+            <div>
+                @RenderBody()
+            </div>
+            </div>
+            <div class="col"></div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
