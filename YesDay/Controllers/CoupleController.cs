@@ -237,5 +237,23 @@ namespace YesDay.Controllers
                     return View(vM);
             }
         }
+
+        [HttpGet]
+        public IActionResult UpdateGuest(int id)
+        {
+            return View(coupleServices.GetGuestForUpdate(id));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateGuest(CoupleUpdateGuestlistVM updateGuest)
+        {
+            if (!ModelState.IsValid)
+                return View(updateGuest);
+
+            coupleServices.UpdateGuest(updateGuest);
+
+            return RedirectToAction(nameof(GuestList));
+           
+        }
     }
 }
