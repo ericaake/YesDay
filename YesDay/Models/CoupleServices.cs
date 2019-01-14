@@ -348,5 +348,16 @@ namespace YesDay.Models
             context.SaveChanges();
         }
 
+        public void DeleteExpense(int id)
+        {
+            Expense expense = new Expense()
+            {
+                Id = id
+            };
+
+            context.Entry(expense).State = EntityState.Deleted;
+            context.SaveChanges();
+        }
+
     }
 }
