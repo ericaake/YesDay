@@ -1,13 +1,26 @@
 ﻿@model PublicLogInVM
 
 <form asp-controller="Public" asp-action="Login">
-    <label asp-for="UserName"></label>
-    <input asp-for="UserName" />
-    <span asp-validation-for="UserName"></span>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="UserName"></label>
+        </div>
+        <div class="col-3">
+            <input asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+    </div>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="Password"></label>
+        </div>
+        <div class="col-3">
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+    </div>
+
 
     <input class="button" type="submit" value="Logga in" />
 

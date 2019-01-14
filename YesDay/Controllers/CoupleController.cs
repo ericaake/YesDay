@@ -212,5 +212,22 @@ namespace YesDay.Controllers
                     return View(vM);
             }
         }
+
+        [HttpGet]
+        public IActionResult UpdateExpense(int id)
+        {
+            return View(coupleServices.GetExpenceForUpdate(id));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateExpense(CoupleUpdateExpenseVM updateExpense)
+        {
+            if (!ModelState.IsValid)
+                return View(updateExpense);
+
+            coupleServices.UpdateExpense(updateExpense);
+
+            return RedirectToAction(nameof(Expense));
+        }
     }
 }

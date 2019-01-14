@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace YesDay.Models.ViewModels
 {
-    public class CoupleExpenseVM
+    public class CoupleUpdateExpenseVM
     {
         public int Id { get; set; }
         public string Userref { get; set; }
-        public string Item { get; set; }
-        public decimal? EstimatedCost { get; set; }
-        public decimal? ActualCost { get; set; }
         public decimal SumAllCost { get; set; }
+
+        [Required]
+        [Display(Name = "Post *")]
+        public string Item { get; set; }
+
+        [Display(Name = "Beräknad kostnad")]
+        public decimal? EstimatedCost { get; set; }
+
+        [Display(Name = "Faktiskt kostnad")]
+        public decimal? ActualCost { get; set; }
     }
 }

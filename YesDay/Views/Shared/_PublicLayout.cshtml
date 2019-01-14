@@ -21,7 +21,7 @@
                         <li><a asp-controller="couple" asp-action="guestList">Gästlista</a></li>
                         <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
                         <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
-                        <li><a asp-controller="couple" asp-action="budget">Budget</a></li>
+                        <li><a asp-controller="couple" asp-action="expense">Budget</a></li>
                         <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
                     </ul>
                 </nav>
@@ -45,15 +45,18 @@
                     }());
                 </script>
             </div>
-            <div class="col">
+            <a asp-controller="public" asp-action="index">
+                <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" />
+            </a>
+            @*<div class="col">
                 <h4 style="font-family: 'Lobster', cursive;">YesDay</h4>
-            </div>
+            </div>*@
 
             <div class="col">
                 <form>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" asp-controller="Public" asp-action="Signup" value="Registrera" />
-                        <input class="btn btn-primary" type="submit" asp-controller="Public" asp-action="Login" value="Logga in" />
+                        <input class="btn btn-light" type="submit" asp-controller="Public" asp-action="Signup" value="Registrera" />
+                        <input class="btn btn-light" type="submit" asp-controller="Public" asp-action="Login" value="Logga in" />
                     </div>
                 </form>
 
