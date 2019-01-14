@@ -91,7 +91,7 @@ namespace YesDay.Models
                 .Where(c => c.Id == coupleId)
                 .FirstOrDefault();
             return couple;
-            
+
         }
 
         internal async Task<IdentityResult> UpdateUserAsync(CoupleSettingVM vM)
@@ -103,8 +103,8 @@ namespace YesDay.Models
             user.FirstName2 = vM.FirstName2;
             user.WeddingDate = vM.WeddingDate;
 
-            return await userManager.UpdateAsync(user); 
-               
+            return await userManager.UpdateAsync(user);
+
         }
 
         public string Userref()
@@ -189,10 +189,10 @@ namespace YesDay.Models
             return context.Vendor
                 .Select(r => new CoupleVendorVM()
                 {
-                   Service = r.Service,
-                   ContactInfo = r.ContactInfo,
-                   Userref = r.Userref
-                   
+                    Service = r.Service,
+                    ContactInfo = r.ContactInfo,
+                    Userref = r.Userref
+
                 })
                 .ToArray();
         }
@@ -246,6 +246,43 @@ namespace YesDay.Models
             };
 
             return viewModel;
+        }
+        public CoupleUpdateGuestlistVM GetGuestForUpdate(int id)
+        {
+            Guest guest = context.Guest.SingleOrDefault(r => r.Id == id);
+
+            return new CoupleUpdateGuestlistVM()
+            {
+                Id = guest.Id,
+                Firstname = guest.Firstname,
+                Lastname = guest.Lastname,
+                Address = guest.Address,
+                Email = guest.Email,
+                FoodPreference = guest.FoodPreference,
+                GuestNote = guest.GuestNote,
+                GuestTitle = guest.GuestTitle,
+                InvitedBy = guest.InvitedBy,
+                WeddingCrewTitle = guest.WeddingCrewTitle,
+                Rsvp = guest.Rsvp,
+                Userref = Userref()
+            };
+        }
+
+        public void UpdateGuest (CoupleUpdateGuestlistVM updateGuest)
+        {
+            Guest guest = context.Guest.SingleOrDefault(r => r.Id == updateGuest.Id);
+
+            guest.Firstname = updateGuest.Firstname;
+            guest.Lastname = updateGuest.Lastname;
+            guest.Address = updateGuest.Address;
+            guest.Email = updateGuest.Email;
+            guest.FoodPreference = updateGuest.FoodPreference;
+            guest.GuestNote = updateGuest.GuestNote;
+            guest.GuestTitle = updateGuest.GuestTitle;
+            guest.InvitedBy = updateGuest.InvitedBy;
+            guest.WeddingCrewTitle = updateGuest.WeddingCrewTitle;
+            guest.Rsvp = updateGuest.Rsvp;
+            context.SaveChanges();
         }
     }
 }
