@@ -322,6 +322,17 @@ namespace YesDay.Models
             context.SaveChanges();
         }
 
+        public void DeleteGuest(int id)
+        {
+            Guest guest = new Guest
+            {
+                Id = id
+            };
+
+            context.Entry(guest).State = EntityState.Deleted;
+            context.SaveChanges();
+        }
+
         public CoupleUpdateExpenseVM GetExpenceForUpdate(int id)
         {
             Expense expense = context.Expense.SingleOrDefault(r => r.Id == id);

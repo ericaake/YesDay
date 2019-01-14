@@ -255,6 +255,14 @@ namespace YesDay.Controllers
             return RedirectToAction(nameof(GuestList));
 
         }
+
+        [HttpPost]
+        public IActionResult DeleteGuest(int id)
+        {
+            coupleServices.DeleteGuest(id);
+            return RedirectToAction(nameof(GuestList));
+        }
+
         public IActionResult UpdateExpense(int id)
         {
             return View(coupleServices.GetExpenceForUpdate(id));

@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a href="/couple/addguest"><input class="btn btn-light"type="submit" value="Lägg till"></a>
+            <a href="/couple/addguest"><input class="btn btn-light" type="submit" value="Lägg till"></a>
         </div>
     </div>
 
@@ -30,7 +30,9 @@
                         <th scope="col">OSA</th>
                         <th scope="col">Specialkost</th>
                         <th scope="col">Anteckningar</th>
-                        <th></th>
+                        @*<th></th>*@
+                        <th scope="col"></th>
+                        <th scope="col"></th>
 
                     </tr>
                 </thead>
@@ -49,6 +51,11 @@
                             <td>@item.FoodPreference</td>
                             <td>@item.GuestNote</td>
                             <td><a asp-controller="Couple" asp-action="UpdateGuest" asp-route-id="@item.Id">Uppdatera</a></td>
+                            <td>
+                                <form asp-controller="Couple" asp-action="DeleteGuest" asp-route-id="@item.Id">
+                                    <input type="submit" class="btn btn-light" value="Ta bort" />
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>
