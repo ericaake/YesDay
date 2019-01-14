@@ -2,31 +2,44 @@
 @{
     ViewData["Title"] = "Expense";
 }
+<div class="container">
 
-<h2>Budget</h2>
+    <div class="row">
+        <div class="col">
+            <h3>Budget</h3>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col">
+            <a href="/couple/addexpense"><input class="btn btn-light" type="submit" value="Lägg till"></a>
+        </div>
+    </div>
 
-
-<a href="/couple/addexpense"><input type="submit" value="Lägg till"></a>
-
-<table>
-
-    <thead>
-        <tr>
-            <th>Förnamn</th>
-            <th>Beräknad kostnad</th>
-            <th>Faktisk kostnad</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Item</td>
-                <td>@item.EstimatedCost</td>
-                <td>@item.ActualCost</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Post</th>
+                        <th scope="col">Beräknad kostnad</th>
+                        <th scope="col">Faktisk kostnad</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Item</td>
+                            <td>@item.EstimatedCost</td>
+                            <td>@item.ActualCost</td>
+                            <td> <a asp-controller="Couple" asp-action="UpdateExpense" asp-route-id="@item.Id">Uppdatera</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 

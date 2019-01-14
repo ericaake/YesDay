@@ -252,6 +252,7 @@ namespace YesDay.Models
             return context.Expense
                 .Select(r => new CoupleExpenseVM
                 {
+                    Id = r.Id,
                     Item = r.Item,
                     EstimatedCost = r.EstimatedCost,
                     ActualCost = r.ActualCost,
@@ -320,5 +321,32 @@ namespace YesDay.Models
             guest.Rsvp = updateGuest.Rsvp;
             context.SaveChanges();
         }
+
+        public CoupleUpdateExpenseVM GetExpenceForUpdate(int id)
+        {
+            Expense expense = context.Expense.SingleOrDefault(r => r.Id == id);
+
+            return new CoupleUpdateExpenseVM()
+            {
+                Id = expense.Id,
+                Userref = Userref(),
+                Item = expense.Item,
+                EstimatedCost = expense.EstimatedCost,
+                ActualCost = expense.ActualCost
+
+            };
+        }
+
+        public void UpdateExpense(CoupleUpdateExpenseVM updateExpense)
+        {
+            Expense expense = context.Expense.SingleOrDefault(r => r.Id == updateExpense.Id);
+
+            expense.ActualCost = updateExpense.ActualCost;
+            expense.EstimatedCost = updateExpense.EstimatedCost;
+            expense.Item = updateExpense.Item;
+
+            context.SaveChanges();
+        }
+
     }
 }

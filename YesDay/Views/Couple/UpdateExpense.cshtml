@@ -1,16 +1,12 @@
-﻿@model CoupleAddNewExpenseVM
+﻿@model CoupleUpdateExpenseVM
 @{
     ViewData["Title"] = "YesDay - Budget";
 }
-<div class="row">
-    <div class="col">
-        <h3>Lägg till Uppgift</h3>
 
-    </div>
-</div>
+<h3>Uppdatera Budget</h3>
 
 
-<form asp-controller="Couple" asp-action="AddExpense" method="post">
+<form asp-controller="Couple" asp-action="UpdateExpense" method="post">
     <div>
         <p class="obligatorisk">(* = Obligatoriska fält)</p>
         <div class="row">
@@ -20,31 +16,34 @@
             <div class="col-3">
                 <input asp-for="Item" />
                 <span asp-validation-for="Item"></span>
+                <br />
+
             </div>
         </div>
         <div class="row">
             <div class="col-3">
                 <label asp-for="EstimatedCost"></label>
+
             </div>
             <div class="col-3">
                 <input asp-for="EstimatedCost" />
                 <br />
+
             </div>
         </div>
         <div class="row">
             <div class="col-3">
                 <label asp-for="ActualCost"></label>
+
             </div>
             <div class="col-3">
                 <input asp-for="ActualCost" />
+
             </div>
         </div>
+
     </div>
-    <br />
+    <input class="btn btn-light" type="submit" value="Spara" />
 
-    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
-
-    <br /><br />
+    <a href="/Couple/Expense">Avbryt</a>
 </form>
-<a href="/Couple/Expense">Avbryt</a>
