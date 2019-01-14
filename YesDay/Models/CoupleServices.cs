@@ -26,6 +26,7 @@ namespace YesDay.Models
                 new SelectListItem { Value="2", Text="Klar"}
         };
 
+
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
             SignInManager<MyIdentityUser> signInManager,
