@@ -27,5 +27,8 @@ namespace YesDay.Models.ViewModels
         [Display(Name = "Bröllopsdatum")]
         [DataType(DataType.Date)]
         public DateTime WeddingDate { get; set; }
+
+        [Display(Name = "Total budget")]
+        public decimal Budget { get; set; }
     }
 }

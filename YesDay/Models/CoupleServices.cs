@@ -80,17 +80,17 @@ namespace YesDay.Models
         {
             int[] guestCount = new int[3];
             var accepted = context.Guest
-                .Where(g => g.Userref == Userref() && g.Rsvp == "1")
+                .Where(g => g.Userref == Userref() && g.Rsvp == 1)
                 .ToArray();
             guestCount[0] = accepted.Length;
 
             var declined = context.Guest
-                .Where(g => g.Userref == Userref() && g.Rsvp == "2")
+                .Where(g => g.Userref == Userref() && g.Rsvp == 2)
                 .ToArray();
             guestCount[1] = declined.Length;
 
             var noResponse = context.Guest
-                .Where(g => g.Userref == Userref() && g.Rsvp == "0")
+                .Where(g => g.Userref == Userref() && g.Rsvp == 0)
                 .ToArray();
             guestCount[2] = noResponse.Length;
 
@@ -108,7 +108,7 @@ namespace YesDay.Models
                 InvitedBy = newGuestVM.InvitedBy,
                 GuestTitle = newGuestVM.GuestTitle,
                 WeddingCrewTitle = newGuestVM.WeddingCrewTitle,
-                Rsvp = newGuestVM.SelectedRsvp.ToString(),
+                Rsvp = newGuestVM.SelectedRsvp,
                 FoodPreference = newGuestVM.FoodPreference,
                 GuestNote = newGuestVM.GuestNote,
                 Userref = Userref()
@@ -136,6 +136,7 @@ namespace YesDay.Models
             user.FirstName1 = vM.FirstName1;
             user.FirstName2 = vM.FirstName2;
             user.WeddingDate = vM.WeddingDate;
+            user.Budget = vM.Budget;
 
             return await userManager.UpdateAsync(user);
 
@@ -277,6 +278,31 @@ namespace YesDay.Models
             context.SaveChanges();
         }
 
+        public decimal TotalBudget()
+        {
+            var totalBudget = context.AspNetUsers
+                .Where(c => c.Id == Userref())
+                .Select(c => c.Budget)
+                .FirstOrDefault();
+
+            return Convert.ToDecimal(totalBudget);
+        }
+
+        public decimal CalculateExpenses()
+        {
+            var expenses = context.Expense
+                .Where(c => c.Userref == Userref())
+                .Select(e => e.ActualCost)
+                .ToArray();
+
+            int sumExpenses = 0;
+            for (int i = 0; i < expenses.Length; i++)
+            {
+                sumExpenses += Convert.ToInt32(expenses[i]);
+            }
+
+            return Convert.ToDecimal(sumExpenses);
+        }
 
         public CoupleExpenseVM[] ShowAllExpenses()
         {
@@ -352,7 +378,7 @@ namespace YesDay.Models
             guest.GuestTitle = updateGuest.GuestTitle;
             guest.InvitedBy = updateGuest.InvitedBy;
             guest.WeddingCrewTitle = updateGuest.WeddingCrewTitle;
-            guest.Rsvp = updateGuest.SelectedRsvp.ToString();
+            guest.Rsvp = updateGuest.SelectedRsvp;
             context.SaveChanges();
         }
 

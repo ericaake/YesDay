@@ -181,7 +181,13 @@ namespace YesDay.Controllers
         [HttpGet]
         public IActionResult Expense()
         {
-            return View(coupleServices.ShowAllExpenses());
+            CoupleBudgetVM budgetVM = new CoupleBudgetVM
+            {
+                TotalBudget = coupleServices.TotalBudget(),
+                SumExpenses = coupleServices.CalculateExpenses()
+            };
+
+            return View((coupleServices.ShowAllExpenses(), budgetVM));
         }
 
         [HttpGet]

@@ -1,4 +1,4 @@
-﻿@model CoupleExpenseVM[]
+﻿@model (CoupleExpenseVM[], CoupleBudgetVM)
 @{
     ViewData["Title"] = "Expense";
 }
@@ -7,6 +7,10 @@
     <div class="row">
         <div class="col">
             <h3>Budget</h3>
+        </div>
+        <div>
+            Total budget: @Convert.ToInt32(Model.Item2.TotalBudget) 
+            Totala utgifter: @Convert.ToInt32(Model.Item2.SumExpenses)
         </div>
     </div>
 
@@ -22,19 +26,17 @@
                 <thead>
                     <tr>
                         <th scope="col">Post</th>
-                        <th scope="col">Beräknad kostnad</th>
-                        <th scope="col">Faktisk kostnad</th>
+                        <th scope="col">Kostnad</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item1)
                     {
                         <tr>
                             <td>@item.Item</td>
-                            <td>@item.EstimatedCost</td>
-                            <td>@item.ActualCost</td>
+                            <td>@Convert.ToInt32(item.ActualCost)</td>
                             <td> <a asp-controller="Couple" asp-action="UpdateExpense" asp-route-id="@item.Id">Uppdatera</a></td>
                             @*<td> <a asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id" method="post">Ta bort</a></td>*@
                             <td> 

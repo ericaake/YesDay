@@ -17,7 +17,7 @@ namespace YesDay.Models.ViewModels
         public string InvitedBy { get; set; }
         public string GuestTitle { get; set; }
         public string WeddingCrewTitle { get; set; }
-        public string Rsvp { get; set; }
+        public int Rsvp { get; set; }
         public SelectListItem[] GuestStatus { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }

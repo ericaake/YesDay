@@ -11,5 +11,7 @@ namespace YesDay.Models.Entities
         public DateTime? DueDate { get; set; }
         public string TaskNote { get; set; }
         public string TaskStatus { get; set; }
+
+        public AspNetUsers UserrefNavigation { get; set; }
     }
 }
