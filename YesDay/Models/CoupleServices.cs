@@ -26,7 +26,14 @@ namespace YesDay.Models
                 new SelectListItem { Value="1", Text="Påbörjad"},
                 new SelectListItem { Value="2", Text="Klar"}
         };
-
+        //selceted ska vara true om personen har valt 
+        //
+        SelectListItem[] guestStatus = new SelectListItem[]
+        {
+                new SelectListItem { Value="0", Text="Inväntar svar", Selected=true },
+                new SelectListItem { Value="1", Text="Kommer"},
+                new SelectListItem { Value="2", Text="Kommer ej"}
+        };
 
         public CoupleServices(
             UserManager<MyIdentityUser> userManager,
@@ -59,10 +66,38 @@ namespace YesDay.Models
                     GuestTitle = r.GuestTitle,
                     WeddingCrewTitle = r.WeddingCrewTitle,
                     Rsvp = r.Rsvp,
+                    GuestStatus = guestStatus,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
+<<<<<<< HEAD
+=======
+                    Userref = r.Userref,
+                    GuestCount = CountAllGuests()
+                   
+>>>>>>> developirma
                 })
                 .ToArray();
+        }
+
+        public int[] CountAllGuests()
+        {
+            int[] guestCount = new int[3];
+            var accepted = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "1")
+                .ToArray();
+            guestCount[0] = accepted.Length;
+
+            var declined = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "2")
+                .ToArray();
+            guestCount[1] = declined.Length;
+
+            var noResponse = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "0")
+                .ToArray();
+            guestCount[2] = noResponse.Length;
+
+            return guestCount;
         }
 
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
@@ -76,7 +111,7 @@ namespace YesDay.Models
                 InvitedBy = newGuestVM.InvitedBy,
                 GuestTitle = newGuestVM.GuestTitle,
                 WeddingCrewTitle = newGuestVM.WeddingCrewTitle,
-                Rsvp = newGuestVM.Rsvp,
+                Rsvp = newGuestVM.SelectedRsvp.ToString(),
                 FoodPreference = newGuestVM.FoodPreference,
                 GuestNote = newGuestVM.GuestNote,
                 Userref = Userref()
@@ -283,11 +318,11 @@ namespace YesDay.Models
 
             return viewModel;
         }
+
         public CoupleUpdateGuestlistVM GetGuestForUpdate(int id)
         {
             Guest guest = context.Guest.SingleOrDefault(r => r.Id == id);
-
-            return new CoupleUpdateGuestlistVM()
+            var ret = new CoupleUpdateGuestlistVM()
             {
                 Id = guest.Id,
                 Firstname = guest.Firstname,
@@ -299,12 +334,15 @@ namespace YesDay.Models
                 GuestTitle = guest.GuestTitle,
                 InvitedBy = guest.InvitedBy,
                 WeddingCrewTitle = guest.WeddingCrewTitle,
-                Rsvp = guest.Rsvp,
+                SelectedRsvp = Convert.ToInt32(guest.Rsvp),
+                GuestStatus = guestStatus,
                 Userref = Userref()
             };
+            ret.GuestStatus[Convert.ToInt32(guest.Rsvp)].Selected = true;
+            return ret;
         }
 
-        public void UpdateGuest (CoupleUpdateGuestlistVM updateGuest)
+        public void UpdateGuest(CoupleUpdateGuestlistVM updateGuest)
         {
             Guest guest = context.Guest.SingleOrDefault(r => r.Id == updateGuest.Id);
 
@@ -317,8 +355,18 @@ namespace YesDay.Models
             guest.GuestTitle = updateGuest.GuestTitle;
             guest.InvitedBy = updateGuest.InvitedBy;
             guest.WeddingCrewTitle = updateGuest.WeddingCrewTitle;
-            guest.Rsvp = updateGuest.Rsvp;
+            guest.Rsvp = updateGuest.SelectedRsvp.ToString();
             context.SaveChanges();
+        }
+
+        public CoupleAddNewGuestVM CreateViewModelGuest()
+        {
+            CoupleAddNewGuestVM viewModel = new CoupleAddNewGuestVM
+            {
+                GuestStatus = guestStatus
+            };
+
+            return viewModel;
         }
 
         public void DeleteGuest(int id)

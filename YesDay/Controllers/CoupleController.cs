@@ -30,18 +30,22 @@ namespace YesDay.Controllers
             return PartialView("_CountDownBox", vM);
 
         }
+
         [HttpGet]
         public IActionResult GuestList()
         {
-            return View(coupleServices.ShowAllGuests());
-
+            CoupleGuestCountVM guestCount = new CoupleGuestCountVM
+            {
+                GuestCount = coupleServices.CountAllGuests()
+            };
+            return View((coupleServices.ShowAllGuests(),guestCount));
         }
 
         [HttpGet]
         public IActionResult AddGuest()
         {
-            return View();
-
+            var vM = coupleServices.CreateViewModelGuest();
+            return View(vM);
         }
 
         [HttpPost]
