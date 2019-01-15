@@ -147,6 +147,7 @@
         onDragDrop: function (draggable) {
             this.onDragExit();
             this.customDragDrop(draggable);
+            //todo: call api to update this items taskstatus...
         }
     };
     window.onload = function () {
@@ -156,27 +157,62 @@
 
         @foreach (var item in Model)
         {
-             <text> data.push(["@item.TaskDescription"]);</text>
+             <text> data.push(@Json.Serialize(@item));</text>
 
         }
 
+          @*@foreach (var item in Model)
+        {
+             <text> data.push(["123 @System.Web.HttpUtility.JavaScriptStringEncode(item.TaskDescription)"]);</text>
 
+        }*@
 
-        var availableMetrics = document.getElementById("available_metrics_list");
+        var todos = document.getElementById("todo_list");
+        var ongoings = document.getElementById("ongoing_list");
+        var dones = document.getElementById("done_list");
 
         for (var i = 0; i < data.length; i++) {
+            let targetList;
+            switch (data[i].taskStatus) {
+                case "0":
+                    targetList = todos;
+                    break;
+                case "1":
+                    targetList = ongoings;
+                    break;
+                case "2":
+                    targetList = dones;
+                    break;
+                default:
+                    break;
+            }
             var liElement = document.createElement("li");
-            liElement.appendChild(document.createTextNode(data[i]));
-            availableMetrics.appendChild(liElement);
+            console.log(data[i]);
+            liElement.innerHTML = data[i].taskDescription;
+            //lagra undan vilket ID denna är. när vi drar den emellan ska den behålla samma ID. 
+            //primary int key i DB
+
+            //liElement.attribut 
+            targetList.appendChild(liElement);
             var liElementDraggable = new Draggable(liElement);
         }
 
-        var availableMetricsDroppable = new Droppable(availableMetrics, function (draggable) {
+        var availableMetricsDroppable = new Droppable(todos, function (draggable) {
+            if (this.element !== draggable.element.parentNode) {
+                this.element.appendChild(draggable.element);
+            }
+        });
+        var availableMetricsDroppable2 = new Droppable(ongoings, function (draggable) {
             if (this.element !== draggable.element.parentNode) {
                 this.element.appendChild(draggable.element);
             }
         });
 
+        var availableMetricsDroppable3 = new Droppable(dones, function (draggable) {
+            if (this.element !== draggable.element.parentNode) {
+                this.element.appendChild(draggable.element);
+            }
+        });
         var selectedMetricsDroppable = new Droppable("next_metric", function (draggable) {
             if (this.element.parentNode !== draggable.element.parentNode) {
                 this.element.parentNode.insertBefore(draggable.element, this.element);
@@ -211,32 +247,25 @@
     <div class="row">
         <div class="col-4">
             <div id="available_metrics_filter">
-                <ul id="available_metrics_list"> </ul>
+                <ul id="todo_list"> </ul>
             </div>
         </div>
         <div class="col-4">
-
+            <div id="available_metrics_filter">
+                <ul id="ongoing_list"> Hej!!!</ul>
+            </div>
 
         </div>
         <div class="col-4">
             <div id="selected_metrics">
-                <ul id="selected_metrics_list">
-                    <li id="next_metric">Next Draggable</li>
+                <ul id="done_list">
+                    <li id="next_metric">Lägg till din uppgift här</li>
                 </ul>
             </div>
 
         </div>
     </div>
 </div>
-
-@*@foreach (var item in Model)
-{
-    <div>
-        @item.TaskDescription
-        @item.DueDate.Value.ToShortDateString()
-    </div>
-
-}*@
 
 <a href="/couple/AddTask"><input type="submit" value="Lägg till"></a>
 

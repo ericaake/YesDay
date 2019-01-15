@@ -135,21 +135,21 @@ a {
 }*/
 
 
-#available_metrics_filter {
+#todo_list {
     margin: 5px;
     border: 1px solid gray;
     padding: 5px;
     background-color: rgb(230, 230, 230);
 }
 
-#available_metrics_list {
+#todo_list {
     padding: 0px;
     border: 1px solid gray;
     padding: 10px;
     background-color: white;
 }
 
-    #available_metrics_list li {
+    #todo_list li {
         margin-top: -1px;
         border: 1px solid gray;
         padding: 5px;
@@ -157,14 +157,14 @@ a {
         background-color: white;
     }
 
-#selected_metrics_list {
+#done_list {
     margin: 5px;
     border: 1px solid gray;
     padding: 10px;
     background-color: white;
 }
 
-    #selected_metrics_list li {
+    #done_list li {
         margin-top: -1px;
         border: 1px solid gray;
         padding: 5px;
@@ -172,7 +172,27 @@ a {
         background-color: white;
     }
 
-        #selected_metrics_list li:last-child {
+        #done_list li:last-child {
+            border: 1px dotted gray;
+        }
+
+
+#ongoing_list {
+    margin: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    background-color: white;
+}
+
+    #ongoing_list li {
+        margin-top: -1px;
+        border: 1px solid gray;
+        padding: 5px;
+        list-style-type: none;
+        background-color: white;
+    }
+
+        #ongoing_list li:last-child {
             border: 1px dotted gray;
         }
 

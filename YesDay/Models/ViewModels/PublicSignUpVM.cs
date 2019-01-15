@@ -8,26 +8,27 @@ namespace YesDay.Models.ViewModels
 {
     public class PublicSignUpVM
     {
-        [Required]
-        [Display(Name = "Ange e-post")]
+        [Required(ErrorMessage ="Vänligen ange din e-post")]
+        [Display(Name = "Ange e-post *")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "Förnamn")]
+        [Required(ErrorMessage ="Vänligen ange ditt namn")]
+        [Display(Name = "Ditt namn *")]
         public string FirstName1 { get; set; }
 
-        [Required]
-        [Display(Name = "Förnamn")]
+        [Required(ErrorMessage = "Vänligen ange namnet på den person du ska gifta dig med")]
+        [Display(Name = "Den du ska gifta dig med *")]
         public string FirstName2 { get; set; }
 
-        [Required]
-        [Display(Name = "Ange ett lösenord")]
+        [Required(ErrorMessage = "Vänligen ange ett lösenord med minst 8 tecken")]
+        [Display(Name = "Ange ett lösenord *")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Required(ErrorMessage ="Vänligen ange ett datum för ditt bröllop")]
         [Display(Name ="Bröllopsdatum")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage =("Vänligen ange ett datum för ditt bröllop"))]
         public DateTime WeddingDate { get; set; }
     }
 }
