@@ -26,7 +26,8 @@ namespace YesDay.Models
                 new SelectListItem { Value="1", Text="Påbörjad"},
                 new SelectListItem { Value="2", Text="Klar"}
         };
-
+        //selceted ska vara true om personen har valt 
+        //
         SelectListItem[] guestStatus = new SelectListItem[]
         {
                 new SelectListItem { Value="0", Text="Inväntar svar", Selected=true },
@@ -64,11 +65,35 @@ namespace YesDay.Models
                     GuestTitle = r.GuestTitle,
                     WeddingCrewTitle = r.WeddingCrewTitle,
                     Rsvp = r.Rsvp,
+                    GuestStatus = guestStatus,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
-                    Userref = r.Userref
+                    Userref = r.Userref,
+                    GuestCount = CountAllGuests()
+                   
                 })
                 .ToArray();
+        }
+
+        public int[] CountAllGuests()
+        {
+            int[] guestCount = new int[3];
+            var accepted = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "1")
+                .ToArray();
+            guestCount[0] = accepted.Length;
+
+            var declined = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "2")
+                .ToArray();
+            guestCount[1] = declined.Length;
+
+            var noResponse = context.Guest
+                .Where(g => g.Userref == Userref() && g.Rsvp == "0")
+                .ToArray();
+            guestCount[2] = noResponse.Length;
+
+            return guestCount;
         }
 
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
@@ -294,8 +319,7 @@ namespace YesDay.Models
         public CoupleUpdateGuestlistVM GetGuestForUpdate(int id)
         {
             Guest guest = context.Guest.SingleOrDefault(r => r.Id == id);
-
-            return new CoupleUpdateGuestlistVM()
+            var ret = new CoupleUpdateGuestlistVM()
             {
                 Id = guest.Id,
                 Firstname = guest.Firstname,
@@ -311,6 +335,8 @@ namespace YesDay.Models
                 GuestStatus = guestStatus,
                 Userref = Userref()
             };
+            ret.GuestStatus[Convert.ToInt32(guest.Rsvp)].Selected = true;
+            return ret;
         }
 
         public void UpdateGuest(CoupleUpdateGuestlistVM updateGuest)

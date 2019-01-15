@@ -84,10 +84,22 @@
 
         </div>
         <div class="col-3">
-            <select asp-for="SelectedRsvp" asp-items="Model.GuestStatus" />
+            <select asp-for="SelectedRsvp" asp-items="Model.GuestStatus"></select>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <label asp-for="FoodPreference"></label>
+
+        </div>
+        <div class="col-3">
+            <input asp-for="FoodPreference" />
         </div>
 
     </div>
+
     <div class="row">
 
         <div class="col-3">

@@ -32,7 +32,7 @@ namespace YesDay.Models.ViewModels
         [Display(Name = "Bröllopsroll")]
         public string WeddingCrewTitle { get; set; }
 
-        [Range(0, 2)]
+        //[Range(0, 2)]
         public int SelectedRsvp { get; set; }
 
         [Display(Name = "Status")]

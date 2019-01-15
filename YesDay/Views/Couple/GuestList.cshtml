@@ -1,17 +1,20 @@
-﻿@model CoupleGuestlistVM[]
+﻿@model (CoupleGuestlistVM[], CoupleGuestCountVM)
 
 @{
     ViewData["Title"] = "YesDay - Gästlista";
 }
 <div class="container">
-    <div class="row">
+    <div class="row" style="padding-top:35px;">
         <div class="col">
             <h3>Gästlista</h3>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <a href="/couple/addguest"><input class="btn btn-light" type="submit" value="Lägg till"></a>
+            <a href="/couple/addguest"><input class="btn btn-light" type="submit" value="Lägg till"></a><br /><br />
+        </div>
+        <div class="col">
+           | Antal gäster: @Model.Item1.Length | Kommer: @Model.Item2.GuestCount[0]| Kommer ej: @Model.Item2.GuestCount[1]| Inväntar svar: @Model.Item2.GuestCount[2] |
         </div>
     </div>
 
@@ -37,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item1)
                     {
                         <tr>
                             <td>@item.Firstname</td>
@@ -47,7 +50,7 @@
                             <td>@item.InvitedBy</td>
                             <td>@item.GuestTitle</td>
                             <td>@item.WeddingCrewTitle</td>
-                            <td>@item.Rsvp</td>
+                            <td>@item.GuestStatus[Convert.ToInt32(item.Rsvp)].Text</td>
                             <td>@item.FoodPreference</td>
                             <td>@item.GuestNote</td>
                             <td><a asp-controller="Couple" asp-action="UpdateGuest" asp-route-id="@item.Id">Uppdatera</a></td>
