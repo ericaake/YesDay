@@ -69,12 +69,9 @@ namespace YesDay.Models
                     GuestStatus = guestStatus,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
-<<<<<<< HEAD
-=======
                     Userref = r.Userref,
                     GuestCount = CountAllGuests()
                    
->>>>>>> developirma
                 })
                 .ToArray();
         }
