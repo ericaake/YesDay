@@ -14,7 +14,6 @@ namespace YesDay.Models.ViewModels
       
         public string ContactInfo { get; set; }
 
-        public string Userref { get; set; }
 
     }
 }

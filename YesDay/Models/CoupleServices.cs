@@ -47,6 +47,7 @@ namespace YesDay.Models
         public CoupleGuestlistVM[] ShowAllGuests()
         {
             return context.Guest
+                .Where(r => r.Userref == Userref())
                 .Select(r => new CoupleGuestlistVM()
                 {
                     Id = r.Id,
@@ -60,7 +61,6 @@ namespace YesDay.Models
                     Rsvp = r.Rsvp,
                     FoodPreference = r.FoodPreference,
                     GuestNote = r.GuestNote,
-                    Userref = r.Userref
                 })
                 .ToArray();
         }
@@ -128,6 +128,7 @@ namespace YesDay.Models
         {
 
             return context.Task
+                .Where(r => r.Userref == Userref())
                 .Select(r => new CoupleChecklistVM()
                 {
                     Id = r.Id,
@@ -135,8 +136,6 @@ namespace YesDay.Models
                     DueDate = r.DueDate,
                     TaskNote = r.TaskNote,
                     TaskStatus = r.TaskStatus,
-                    Userref = Userref()
-
                 })
                 .ToArray();
         }
@@ -189,12 +188,12 @@ namespace YesDay.Models
         public CoupleVendorVM[] ShowAllVendors()
         {
             return context.Vendor
+                .Where(r => r.Userref == Userref())
                 .Select(r => new CoupleVendorVM()
                 {
                     Id = r.Id,
                     Service = r.Service,
                     ContactInfo = r.ContactInfo,
-                    Userref = r.Userref
 
                 })
                 .ToArray();
@@ -250,13 +249,13 @@ namespace YesDay.Models
         public CoupleExpenseVM[] ShowAllExpenses()
         {
             return context.Expense
+                .Where(r => r.Userref == Userref())
                 .Select(r => new CoupleExpenseVM
                 {
                     Id = r.Id,
                     Item = r.Item,
                     EstimatedCost = r.EstimatedCost,
                     ActualCost = r.ActualCost,
-                    Userref = r.Userref
                 })
                 .ToArray();
         }
