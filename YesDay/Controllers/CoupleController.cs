@@ -40,8 +40,8 @@ namespace YesDay.Controllers
         [HttpGet]
         public IActionResult AddGuest()
         {
-            return View();
-
+            var vM = coupleServices.CreateViewModelGuest();
+            return View(vM);
         }
 
         [HttpPost]

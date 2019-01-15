@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -31,8 +32,11 @@ namespace YesDay.Models.ViewModels
         [Display(Name = "Bröllopsroll")]
         public string WeddingCrewTitle { get; set; }
 
-        [Display(Name = "OSA")]
-        public string Rsvp { get; set; }
+        [Range(0, 2)]
+        public int SelectedRsvp { get; set; }
+
+        [Display(Name = "Status")]
+        public SelectListItem[] GuestStatus { get; set; }
 
         [Display(Name = "Specialkost")]
         public string FoodPreference { get; set; }
