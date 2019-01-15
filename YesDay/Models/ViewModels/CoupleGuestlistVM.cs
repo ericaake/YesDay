@@ -21,11 +21,8 @@ namespace YesDay.Models.ViewModels
         public SelectListItem[] GuestStatus { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
-<<<<<<< HEAD
-=======
         public string Userref { get; set; }
         public int[] GuestCount { get; set; }
->>>>>>> developirma
 
 
     }

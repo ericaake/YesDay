@@ -1,25 +1,61 @@
 ﻿@model PublicSignUpVM
 
 <form asp-controller="Public" asp-action="signup">
-    <label asp-for="Email"></label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="Email"></label>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
+        </div>
+        <div class="col-3">
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
 
-    <label asp-for="FirstName1"></label>
-    <input asp-for="FirstName1" />
-    <span asp-validation-for="FirstName1"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="Password"></label>
 
-    <label asp-for="FirstName2"></label>
-    <input asp-for="FirstName2" />
-    <span asp-validation-for="FirstName2"></span>
+        </div>
+        <div class="col-3">
 
-    <label asp-for="WeddingDate"></label>
-    <input asp-for="WeddingDate" />
-    <span asp-validation-for="WeddingDate"></span>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
 
-    <input class="button" type="submit" value="Registrera par" />
+            <label asp-for="FirstName1"></label>
+        </div>
+        <div class="col-3">
+
+            <input asp-for="FirstName1" />
+            <span asp-validation-for="FirstName1"></span>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="FirstName2"></label>
+        </div>
+        <div class="col-3">
+            <input asp-for="FirstName2" />
+            <span asp-validation-for="FirstName2"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="WeddingDate"></label>
+        </div>
+        <div class="col-3">
+            <input asp-for="WeddingDate" />
+            <span asp-validation-for="WeddingDate"></span>
+        </div>
+    </div>
+
+
+
+
+    <input class="btn btn-light" type="submit" value="Registrera par" />
 </form>
