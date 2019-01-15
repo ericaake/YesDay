@@ -6,14 +6,16 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="~/StyleSheet.css" />
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
+
 </head>
 <body>
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col">
                 <div class="nav-toggle">
                     <div class="nav-toggle-bar"></div>
+               
                 </div>
                 <nav class="nav">
                     <ul>
@@ -25,6 +27,7 @@
                         <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
                     </ul>
                 </nav>
+
                 <script>
                     (function () {
 
@@ -49,8 +52,8 @@
                 <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" />
             </a>
             @*<div class="col">
-                <h4 style="font-family: 'Lobster', cursive;">YesDay</h4>
-            </div>*@
+                    <h4 style="font-family: 'Lobster', cursive;">YesDay</h4>
+                </div>*@
 
             <div class="col">
                 <form>
@@ -65,12 +68,30 @@
     </div>
     <div class="row">
         <div class="col"></div>
-        <div class="col-10">
+        <div class="col"></div>
+
+        <div class="col-8" id="publiclayoutcontainer">
             <div>
                 @RenderBody()
             </div>
         </div>
         <div class="col"></div>
+        <div class="col"></div>
+
+    </div>
+    <div class="footer">
+        <div class="container">
+
+           <h3>YesDay</h3>
+            <div class="col-4">
+           <h4>Planerar ni bröllop?</h4>
+            <p>
+                På YesDay hittar ni allt ni behöver inför er planering av bröllopet. Här kan ni få en överblick av bland annat, er gästlista, saker ni behöver boacka av inför bröllopet, samla kontaktuppgifter och hålla koll på er budget. Allt för att ni ska få ert drömbröllop!
+                </p>
+            </div>
+            <p>&copy; YesDay</p>
+
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

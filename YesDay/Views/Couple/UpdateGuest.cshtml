@@ -2,8 +2,11 @@
 @{
     ViewData["Title"] = "YesDay - Uppdatera gäst";
 }
-
-<h3>Uppdatera gäst</h3>
+<div id="header" class="row">
+    <div class="col">
+        <h2>Uppdatera gäst</h2>
+    </div>
+</div>
 
 <form asp-controller="Couple" asp-action="UpdateGuest" method="post">
     <p class="obligatorisk">(* = Obligatoriska fält)</p>

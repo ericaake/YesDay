@@ -4,7 +4,11 @@
     ViewData["Title"] = "YesDay - Lägg till ny gäst";
 }
 
-<br />
+<div id="header" class="row">
+    <div class="col">
+        <h2>Lägg till en ny gäst</h2>
+    </div>
+</div>
 <form asp-controller="Couple" asp-action="AddGuest" method="post">
     <p class="obligatorisk">(* = Obligatoriska fält)</p>
     <div class="row">

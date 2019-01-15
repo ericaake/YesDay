@@ -2,14 +2,12 @@
 @{
     ViewData["Title"] = "YesDay - Budget";
 }
-<div class="row">
-    <div class="col">
-        <h3>Lägg till Uppgift</h3>
 
+<div id="header" class="row">
+    <div class="col">
+        <h2>Lägg till utgift</h2>
     </div>
 </div>
-
-
 <form asp-controller="Couple" asp-action="AddExpense" method="post">
     <div>
         <p class="obligatorisk">(* = Obligatoriska fält)</p>

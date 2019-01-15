@@ -161,12 +161,6 @@
 
         }
 
-          @*@foreach (var item in Model)
-        {
-             <text> data.push(["123 @System.Web.HttpUtility.JavaScriptStringEncode(item.TaskDescription)"]);</text>
-
-        }*@
-
         var todos = document.getElementById("todo_list");
         var ongoings = document.getElementById("ongoing_list");
         var dones = document.getElementById("done_list");
@@ -189,7 +183,11 @@
             var liElement = document.createElement("li");
             console.log(data[i]);
             liElement.innerHTML = data[i].taskDescription;
-            //lagra undan vilket ID denna är. när vi drar den emellan ska den behålla samma ID. 
+            liElement.attributes = data[i].id;
+            console.log(liElement.attributes);
+
+       
+            //lagra undan vilket ID denna är. när vi drar den emellan ska den behålla samma ID.
             //primary int key i DB
 
             //liElement.attribut 
@@ -225,21 +223,21 @@
     };
 
 </script>
-
-<h2>Checklista</h2>
-
+<div id="header" class="row">
+    <div class="col">
+        <h2>Checklista</h2>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <h3>Att göra</h3>
+            <h4>Att göra</h4>
         </div>
         <div class="col-4">
-            <h3>Pågående</h3>
-
+            <h4>Pågående</h4>
         </div>
         <div class="col-4">
-            <h3>Klart</h3>
-
+            <h4>Klart</h4>
         </div>
     </div>
 </div>
@@ -252,22 +250,19 @@
         </div>
         <div class="col-4">
             <div id="available_metrics_filter">
-                <ul id="ongoing_list"> Hej!!!</ul>
+                <ul id="ongoing_list"> </ul>
             </div>
-
         </div>
         <div class="col-4">
             <div id="selected_metrics">
                 <ul id="done_list">
-                    <li id="next_metric">Lägg till din uppgift här</li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
 
-<a href="/couple/AddTask"><input type="submit" value="Lägg till"></a>
+<a href="/couple/AddTask"><input class="btn btn-light" type="submit" value="Lägg till"></a>
 
 
 
