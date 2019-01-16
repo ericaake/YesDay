@@ -93,6 +93,14 @@ namespace YesDay.Controllers
             return View(coupleServices.GetChecklist());
         }
 
+        [HttpPost]
+        [Route("UpdateCheckListItem/{itemId}/{taskStatus}")]
+        public IActionResult UpdateCheckListItem(int itemId, int taskStatus)
+        {
+            coupleServices.UpdateCheckListItem(itemId, taskStatus);
+            return Ok();
+        }
+
         [HttpGet]
         public IActionResult AddTask()
         {

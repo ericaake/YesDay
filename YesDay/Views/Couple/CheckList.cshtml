@@ -147,7 +147,30 @@
         onDragDrop: function (draggable) {
             this.onDragExit();
             this.customDragDrop(draggable);
-            //todo: call api to update this items taskstatus...
+
+            let itemId = draggable.element.getAttribute("data-item-id");
+            let toStatusId = null;
+            switch (this.element.id) {
+                case "todo_list":
+                    toStatusId = 0;
+                    break;
+                case "ongoing_list":
+                    toStatusId = 1;
+                    break;
+                case "done_list":
+                    toStatusId = 2;
+                    break;
+                default:
+                    break;
+            };
+
+            $.ajax({
+                url: "/UpdateCheckListItem/" + itemId + "/" + toStatusId,
+                type: "POST",
+                success: function (result) {
+                    console.log(result);
+                }
+            });
         }
     };
     window.onload = function () {
@@ -181,16 +204,9 @@
                     break;
             }
             var liElement = document.createElement("li");
-            console.log(data[i]);
+            liElement.setAttribute("data-item-id", data[i].id);
+            console.log(liElement);
             liElement.innerHTML = data[i].taskDescription;
-            liElement.attributes = data[i].id;
-            console.log(liElement.attributes);
-
-       
-            //lagra undan vilket ID denna är. när vi drar den emellan ska den behålla samma ID.
-            //primary int key i DB
-
-            //liElement.attribut 
             targetList.appendChild(liElement);
             var liElementDraggable = new Draggable(liElement);
         }
