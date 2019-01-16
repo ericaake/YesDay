@@ -97,6 +97,13 @@ namespace YesDay.Models
             return guestCount;
         }
 
+        internal void UpdateCheckListItem(int itemId, int taskStatus)
+        {
+            var item = context.Task.Find(itemId);
+            item.TaskStatus = taskStatus.ToString();
+            context.SaveChanges();
+        }
+
         public void AddNewGuest(CoupleAddNewGuestVM newGuestVM)
         {
             Guest guest = new Guest()
