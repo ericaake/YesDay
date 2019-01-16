@@ -1,34 +1,30 @@
 ﻿@model PublicLogInVM
 
-    <div id="header" class="row">
-        <div class="col">
-            <h2>Logga in</h2>
-        </div>
+<div id="header" class="row" style="margin-bottom:30px">
+    <div class="col-2"></div>
+    <div class="col">
+        <h2>Logga in</h2>
     </div>
+</div>
+<div class="row" style="margin-bottom:40px">
 
-    <form asp-controller="Public" asp-action="Login">
-        <div class="row">
-            <div class="col-3">
+    <div class="col-2"></div>
+    <div class="col">
+        <form asp-controller="Public" asp-action="Login">
+            <div class="form-group col-md-6">
+
                 <label asp-for="UserName"></label>
-            </div>
-            <div class="col-3">
-                <input asp-for="UserName" />
+
+                <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName"></span>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-3">
                 <label asp-for="Password"></label>
+
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password"></span> <br />
+            <input class="btn btn-light" type="submit" value="Logga in" />
             </div>
-            <div class="col-3">
-                <input asp-for="Password" />
-                <span asp-validation-for="Password"></span>
-            </div>
-        </div>
-
-
-        <input class="btn btn-light" type="submit" value="Logga in" />
-
-    </form>
-
+        </form>
+    </div>
+    <div class="col"></div>
+</div>

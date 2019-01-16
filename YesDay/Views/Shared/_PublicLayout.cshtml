@@ -10,10 +10,10 @@
 
 </head>
 <body>
-    <header>
-        <div class="container clearfix">
+    <div class="container-fluid">
+        <header>
             <div class="row">
-                <div class="col">
+                <div class="col-3">
                     <div class="nav-toggle">
                         <div class="nav-toggle-bar"></div>
 
@@ -49,44 +49,50 @@
                     </script>
                 </div>
                 <div class="col">
-                    <nav>
+                    <div class="float-right">
                         <a asp-controller="public" asp-action="index">
                             <img src="~/Images/banner.png" alt="logo" style="height:100px; width:300px" />
                         </a>
-                    </nav>
-
+                    </div>
                 </div>
                 <div class="col" id="loginregisterbtn">
-                    <nav>
-                        <a asp-controller="public" asp-action="Signup"><input class="btn btn-light" type="submit" value="Registrera" /></a>
-                        <a asp-controller="public" asp-action="Login"><input class="btn btn-light" type="submit" value="Logga in" /></a>
-                    </nav>
+                    <div class="float-right">
+                        <nav>
+                            <a asp-controller="public" asp-action="Signup"><input class="btn btn-light" type="submit" value="Registrera" /></a>
+                            <a asp-controller="public" asp-action="Login"><input class="btn btn-light" type="submit" value="Logga in" /></a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="row align-items-start">
+            <div class="col">
+                <div>
+                    @RenderBody()
                 </div>
             </div>
         </div>
-    </header>
-    <div class="row">
-        <div class="col">
-            <div>
-                @RenderBody()
-            </div>
-        </div>
+        @*<div class="footer">*@
+        @*</div>*@
     </div>
-    <div class="footer">
-        <div class="container">
-            <h3>YesDay</h3>
-            <div class="col-4">
-                <h4>Planerar ni bröllop?</h4>
-                <p>
-                    På YesDay hittar ni allt ni behöver inför er planering av bröllopet.
-                    Här kan ni få en överblick av bland annat, er gästlista, saker ni behöver boacka av inför bröllopet,
-                    samla kontaktuppgifter och hålla koll på er budget. Allt för att ni ska få ert drömbröllop!
-                </p>
-            </div>
-            <p>&copy; YesDay</p>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <h3>YesDay</h3>
+                <div class="col-4">
+                    <h4>Planerar ni bröllop?</h4>
+                    <p>
+                        På YesDay hittar ni allt ni behöver inför er planering av bröllopet.
+                        Här kan ni få en överblick av bland annat, er gästlista, saker ni behöver boacka av inför bröllopet,
+                        samla kontaktuppgifter och hålla koll på er budget. Allt för att ni ska få ert drömbröllop!
+                    </p>
+                </div>
+                <p>&copy; YesDay</p>
 
+            </div>
         </div>
-    </div>
+
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

@@ -1,67 +1,42 @@
 ﻿@model PublicSignUpVM
 
 
-    <div id="header" class="row">
-        <div class="col">
-            <h2>Registrera användare</h2>
-        </div>
+<div id="header" class="row">
+    <div class="col-2"></div>
+    <div class="col">
+        <h2>Registrera användare</h2>
     </div>
-    <form asp-controller="Public" asp-action="signup">
-        <div class="row">
-            <div class="col-3">
-                <label asp-for="Email"></label>
+</div>
+<div class="row">
 
-            </div>
-            <div class="col-3">
-                <input asp-for="Email" />
+    <div class="col-2"></div>
+    <div class="col">
+
+        <form asp-controller="Public" asp-action="signup">
+            <div class="form-group col-md-3">
+
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email"></span>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
                 <label asp-for="Password"></label>
-
-            </div>
-            <div class="col-3">
-
-                <input asp-for="Password" />
+                <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password"></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
 
                 <label asp-for="FirstName1"></label>
-            </div>
-            <div class="col-3">
-
-                <input asp-for="FirstName1" />
+                <input asp-for="FirstName1" class="form-control" />
                 <span asp-validation-for="FirstName1"></span>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
                 <label asp-for="FirstName2"></label>
-            </div>
-            <div class="col-3">
-                <input asp-for="FirstName2" />
+                <input asp-for="FirstName2" class="form-control" />
                 <span asp-validation-for="FirstName2"></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
+
                 <label asp-for="WeddingDate"></label>
+                <input asp-for="WeddingDate" class="form-control" />
+                <span asp-validation-for="WeddingDate"></span><br />
+
+                <input class="btn btn-light" type="submit" value="Registrera par" />
             </div>
-            <div class="col-3">
-                <input asp-for="WeddingDate" />
-                <span asp-validation-for="WeddingDate"></span>
-            </div>
-        </div>
-
-
-
-
-        <input class="btn btn-light" type="submit" value="Registrera par" />
-    </form>
+        </form>
+    </div>
+</div>
