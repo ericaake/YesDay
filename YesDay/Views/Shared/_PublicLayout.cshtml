@@ -10,66 +10,64 @@
 
 </head>
 <body>
-    <div class="container" >
-        <div class="row">
-            <div class="col">
-                <div class="nav-toggle">
-                    <div class="nav-toggle-bar"></div>
-               
-                </div>
-                <nav class="nav">
-                    <ul>
-                        <li><a asp-controller="couple" asp-action="overview">Översikt</a></li>
-                        <li><a asp-controller="couple" asp-action="guestList">Gästlista</a></li>
-                        <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
-                        <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
-                        <li><a asp-controller="couple" asp-action="expense">Budget</a></li>
-                        <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
-                    </ul>
-                </nav>
+    <header>
+        <div class="container clearfix">
+            <div class="row">
+                <div class="col">
+                    <div class="nav-toggle">
+                        <div class="nav-toggle-bar"></div>
 
-                <script>
-                    (function () {
-
-                        var hamburger = {
-                            navToggle: document.querySelector('.nav-toggle'),
-                            nav: document.querySelector('nav'),
-
-                            doToggle: function (e) {
-                                e.preventDefault();
-                                this.navToggle.classList.toggle('expanded');
-                                this.nav.classList.toggle('expanded');
-                            }
-                        };
-
-                        hamburger.navToggle.addEventListener('click', function (e) { hamburger.doToggle(e); });
-                        //hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
-
-                    }());
-                </script>
-            </div>
-            <a asp-controller="public" asp-action="index">
-                <img src="~/Images/banner.png" alt="logo" style="height:68px; width:200px" />
-            </a>
-            @*<div class="col">
-                    <h4 style="font-family: 'Lobster', cursive;">YesDay</h4>
-                </div>*@
-
-            <div class="col">
-                <form>
-                    <div class="form-group">
-                        <input class="btn btn-light" type="submit" asp-controller="Public" asp-action="Signup" value="Registrera" />
-                        <input class="btn btn-light" type="submit" asp-controller="Public" asp-action="Login" value="Logga in" />
                     </div>
-                </form>
+                    <nav class="nav">
+                        <ul>
+                            <li><a asp-controller="couple" asp-action="overview">Översikt</a></li>
+                            <li><a asp-controller="couple" asp-action="guestList">Gästlista</a></li>
+                            <li><a asp-controller="couple" asp-action="checklist">Checklista</a></li>
+                            <li><a asp-controller="couple" asp-action="vendor">Leverantörer</a></li>
+                            <li><a asp-controller="couple" asp-action="expense">Budget</a></li>
+                            <li><a asp-controller="couple" asp-action="settings">Inställningar</a></li>
+                        </ul>
+                    </nav>
+                    <script>
+                        (function () {
 
+                            var hamburger = {
+                                navToggle: document.querySelector('.nav-toggle'),
+                                nav: document.querySelector('nav'),
+
+                                doToggle: function (e) {
+                                    e.preventDefault();
+                                    this.navToggle.classList.toggle('expanded');
+                                    this.nav.classList.toggle('expanded');
+                                }
+                            };
+
+                            hamburger.navToggle.addEventListener('click', function (e) { hamburger.doToggle(e); });
+                            //hamburger.nav.addEventListener('click', function (e) { hamburger.doToggle(e); });
+
+                        }());
+                    </script>
+                </div>
+                <div class="col">
+                    <nav>
+                        <a asp-controller="public" asp-action="index">
+                            <img src="~/Images/banner.png" alt="logo" style="height:100px; width:300px" />
+                        </a>
+                    </nav>
+                   
+                </div>
+                <div class="col" id="skitbajs">
+                    <nav>
+                        <a asp-controller="public" asp-action="Signup"><input class="btn btn-light" type="submit" value="Registrera" /></a>
+                        <a asp-controller="public" asp-action="Login"><input class="btn btn-light" type="submit" value="Logga in" /></a>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
     <div class="row">
         <div class="col"></div>
         <div class="col"></div>
-
         <div class="col-8" id="publiclayoutcontainer">
             <div>
                 @RenderBody()
@@ -81,12 +79,13 @@
     </div>
     <div class="footer">
         <div class="container">
-
-           <h3>YesDay</h3>
+            <h3>YesDay</h3>
             <div class="col-4">
-           <h4>Planerar ni bröllop?</h4>
-            <p>
-                På YesDay hittar ni allt ni behöver inför er planering av bröllopet. Här kan ni få en överblick av bland annat, er gästlista, saker ni behöver boacka av inför bröllopet, samla kontaktuppgifter och hålla koll på er budget. Allt för att ni ska få ert drömbröllop!
+                <h4>Planerar ni bröllop?</h4>
+                <p>
+                    På YesDay hittar ni allt ni behöver inför er planering av bröllopet.
+                    Här kan ni få en överblick av bland annat, er gästlista, saker ni behöver boacka av inför bröllopet,
+                    samla kontaktuppgifter och hålla koll på er budget. Allt för att ni ska få ert drömbröllop!
                 </p>
             </div>
             <p>&copy; YesDay</p>
