@@ -138,18 +138,20 @@ a {
     border: 1px solid gray;
     padding: 5px;
     background-color: rgb(230, 230, 230);
+
 }
 
 #todo_list {
     padding: 0px;
-    border: 1px solid gray;
+    border: 1px solid #EAD5D0;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
 }
 
     #todo_list li {
         margin-top: -1px;
-        border: 1px solid gray;
+        border: 1px solid lightgray;
         padding: 5px;
         list-style-type: none;
         background-color: white;
@@ -157,42 +159,45 @@ a {
 
 #done_list {
     margin: 5px;
-    border: 1px solid gray;
+    border: 1px solid #EAD5D0;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
 }
 
     #done_list li {
         margin-top: -1px;
-        border: 1px solid gray;
+        border: 1px solid lightgray;
         padding: 5px;
         list-style-type: none;
         background-color: white;
+        
     }
 
-        #done_list li:last-child {
+        /*#done_list li:last-child {
             border: 1px dotted gray;
-        }
+        }*/
 
 
 #ongoing_list {
     margin: 5px;
-    border: 1px solid gray;
+    border: 1px solid #EAD5D0;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
 }
 
     #ongoing_list li {
         margin-top: -1px;
-        border: 1px solid gray;
+        border: 1px solid lightgray;
         padding: 5px;
         list-style-type: none;
         background-color: white;
     }
 
-        #ongoing_list li:last-child {
+        /*#ongoing_list li:last-child {
             border: 1px dotted gray;
-        }
+        }*/
 
 #next_metric {
     color: gray;
@@ -210,6 +215,8 @@ a {
 .draggable {
     position: relative;
     cursor: default;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .dragOver {
