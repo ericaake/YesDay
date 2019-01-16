@@ -10,30 +10,33 @@
 </div>
 
 <form asp-controller="Couple" asp-action="AddTask" method="post">
-    <div>
-        <label asp-for="TaskDescription"></label>
-        <input asp-for="TaskDescription" />
-        <span asp-validation-for="TaskDescription"></span>
-        <br />
-
-        <label asp-for="DueDate"></label>
-        <input asp-for="DueDate" />
-        <br />
-
-        <label asp-for="TaskNote"></label>
-        <input asp-for="TaskNote" />
-        <br />
-
-        <label asp-for="TaskStatus"></label>
-        <select asp-for="SelectedTaskStatus" asp-items="Model.TaskStatus"></select>
-        <br />
+    <div class="form-group-row">
+        <div class="col-3">
+            <label asp-for="TaskDescription"></label>
+            <input class="form-control" asp-for="TaskDescription" />
+            <span asp-validation-for="TaskDescription"></span>
+            <br />
+        </div>
+        <div class="col-3">
+            <label asp-for="DueDate"></label>
+            <input class="form-control" asp-for="DueDate" />
+            <br />
+        </div>
+        <div class="col-3">
+            <label asp-for="TaskNote"></label>
+            <input class="form-control" asp-for="TaskNote" />
+            <br />
+        </div>
+        <div class="col-3">
+            <label asp-for="TaskStatus"></label>
+            <select class="form-control" asp-for="SelectedTaskStatus" asp-items="Model.TaskStatus"></select>
+                @*<select class="form-control">
+                <br />*@
+        </div>
     </div>
-
-    <br />
-    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
-
-    <br />
-
-    <a href="/Couple/Checklist">Avbryt</a>
+        <div class="row" style="padding-top:40px;">
+            <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+            <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+        </div>
+        <a href="/Couple/Checklist">Avbryt</a>
 </form>

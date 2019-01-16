@@ -5,35 +5,42 @@
         <h3>Välkomna @Model.FirstName1 och @Model.FirstName2 !</h3>
     </div>
     <div class="row">
-        <p>Välj någon av funktionerna och börja planera er stora dag!</p>
+        <h5>Välj någon av funktionerna och börja planera er stora dag!</h5>
     </div>
-    <div class="row" style="padding-top:50px;padding-bottom:50px">
-        <div class="col">
-            <a asp-controller="Couple" asp-action="guestlist">
+    <div class="row" style="padding-top:50px;">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
+            <a asp-controller="Couple" asp-action="guestlist" style="text-decoration:none;">
                 <img src="~/Images/Gästlista.png" alt="Gästlista" style="width:75px;height:75px;" />
+                <p>
+                    I gästlistan får ni en samlad lista över nära och kära som ni bjudit in till ert bröllop
+                </p>
             </a>
         </div>
-        <div class="col">
-            <a asp-controller="Couple" asp-action="checklist">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
+            <a asp-controller="Couple" asp-action="checklist" style="text-decoration:none;">
                 <img src="~/Images/checklista.png" alt="Checklista" style="width:75px;height:75px;" />
+                <p>Checklistan hjälper er att hålla koll på all to-do’s inför den stora dagen. Markera sätt status direkt på uppgiften!</p>
             </a>
         </div>
-        <div class="col">
-            <a asp-controller="Couple" asp-action="vendor">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
+            <a asp-controller="Couple" asp-action="vendor" style="text-decoration:none;">
                 <img src="~/Images/levernatörer.png" alt="Leverantörer" style="width:75px;height:75px;" />
+                <p>Samla kontaktuppgifter och annan viktig information till allt från skräddaren till leverantören av dina blommor </p>
             </a>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <a asp-controller="Couple" asp-action="Expense">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
+            <a asp-controller="Couple" asp-action="Expense" style="text-decoration:none;">
                 <img src="~/Images/budget.png" alt="Budget" style="width:75px;height:75px;" />
+                <p>Ha koll på er budget under hela planeringsprocessen genom att lägga till din totala 
+                budget och samtliga kostnader</p>
             </a>
         </div>
-        <div class="col">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
             <img src="~/Images/inbjudanprel.png" alt="Inbjudan" style="width:75px;height:75px;" />
         </div>
-        <div class="col">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded, col">
             <img src="~/Images/moodboard.png" alt="Moodboard" style="width:75px;height:75px;" />
         </div>
     </div>
