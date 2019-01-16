@@ -9,5 +9,6 @@ namespace YesDay.Models.ViewModels
     {
         public decimal? TotalBudget { get; set; }
         public decimal SumExpenses { get; set; }
+        public decimal Percentage { get; set; }
     }
 }

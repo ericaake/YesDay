@@ -9,14 +9,27 @@
             <h3>Budget</h3>
         </div>
         <div>
-            Total budget: @Convert.ToInt32(Model.Item2.TotalBudget) 
+            Total budget: @Convert.ToInt32(Model.Item2.TotalBudget)
             Totala utgifter: @Convert.ToInt32(Model.Item2.SumExpenses)
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom:15px;">
         <div class="col">
             <a href="/couple/addexpense"><input class="btn btn-light" type="submit" value="Lägg till"></a>
+        </div>
+        <div id="progressbar" class="col">
+            <div class="tox-progress" data-size="100" data-thickness="12" data-color="#515D61" data-background="#fcfbf1" data-progress="@Convert.ToInt32(Model.Item2.Percentage)" data-speed="500">
+                <div class="tox-progress-content" data-vcenter="true" style="">
+                    @Convert.ToInt32(Model.Item2.Percentage) % av budget
+                </div>
+            </div>
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    ToxProgress.create();
+                    ToxProgress.animate();
+                });
+            </script>
         </div>
     </div>
 
@@ -39,11 +52,11 @@
                             <td>@Convert.ToInt32(item.ActualCost)</td>
                             <td> <a asp-controller="Couple" asp-action="UpdateExpense" asp-route-id="@item.Id">Uppdatera</a></td>
                             @*<td> <a asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id" method="post">Ta bort</a></td>*@
-                            <td> 
-                            <form asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id">
-                                <input type="submit" class="btn btn-light" value="Ta bort" />
-                            </form>
-                                </td>
+                            <td>
+                                <form asp-controller="Couple" asp-action="DeleteExpense" asp-route-id="@item.Id">
+                                    <input type="submit" class="btn btn-light" value="Ta bort" />
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>

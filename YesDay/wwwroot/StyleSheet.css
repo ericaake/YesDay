@@ -227,3 +227,11 @@ a {
     height: 520px;
     width: 50%;
 }
+
+#progressbar {
+    width:100px;
+}
+
+.tox-progress-content {
+    text-align:center;
+}
