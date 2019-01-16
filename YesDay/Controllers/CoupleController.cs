@@ -193,7 +193,7 @@ namespace YesDay.Controllers
             {
                 TotalBudget = coupleServices.TotalBudget(),
                 SumExpenses = coupleServices.CalculateExpenses(),
-                Percentage = coupleServices.CalculateExpenses()/ coupleServices.TotalBudget() * 100
+                Percentage = coupleServices.CalculatePercentage()
             };
 
             return View((coupleServices.ShowAllExpenses(), budgetVM));
@@ -225,8 +225,7 @@ namespace YesDay.Controllers
             return RedirectToAction(nameof(Expense));
         }
 
-
-
+        [HttpGet]
         public IActionResult Settings()
         {
             var couple = coupleServices.GetUserById();
@@ -236,7 +235,8 @@ namespace YesDay.Controllers
                 FirstName2 = couple.FirstName2,
                 Email = couple.Email,
                 Password = couple.PasswordHash,
-                WeddingDate = couple.WeddingDate
+                WeddingDate = couple.WeddingDate,
+                Budget = couple.Budget
             };
             return View(vM);
         }

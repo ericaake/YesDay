@@ -71,7 +71,7 @@ namespace YesDay.Models
                     GuestNote = r.GuestNote,
                     Userref = r.Userref,
                     GuestCount = CountAllGuests()
-                   
+
                 })
                 .ToArray();
         }
@@ -137,9 +137,7 @@ namespace YesDay.Models
 
         internal async Task<IdentityResult> UpdateUserAsync(CoupleSettingVM vM)
         {
-            var coupleId = Userref();
-
-            MyIdentityUser user = identityContext.Users.SingleOrDefault(u => u.Id == coupleId);
+            MyIdentityUser user = identityContext.Users.SingleOrDefault(u => u.Id == Userref());
             user.FirstName1 = vM.FirstName1;
             user.FirstName2 = vM.FirstName2;
             user.WeddingDate = vM.WeddingDate;
@@ -309,6 +307,22 @@ namespace YesDay.Models
             }
 
             return Convert.ToDecimal(sumExpenses);
+        }
+
+        public decimal CalculatePercentage()
+        {
+            var exp = CalculateExpenses();
+            var bud = TotalBudget();
+            if (bud < exp)
+                return 0;
+            if (bud == 0)
+                bud = 1;
+            if (exp == 0)
+                exp = 1;
+
+            var percentage = exp / bud;
+
+            return percentage * 100;
         }
 
         public CoupleExpenseVM[] ShowAllExpenses()

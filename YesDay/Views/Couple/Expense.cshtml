@@ -2,23 +2,19 @@
 @{
     ViewData["Title"] = "Expense";
 }
-<div id="header" class="row">
-    <div class="col">
-        <h2>Budget</h2>
-    </div>
-</div>
 <div class="container">
-
-    <div class="row">
+    <div id="header" class="row">
         <div class="col">
-            <h3>Budget</h3>
+            <h2>Budget</h2>
         </div>
-        <div>
-            Total budget: @Convert.ToInt32(Model.Item2.TotalBudget)
-            Totala utgifter: @Convert.ToInt32(Model.Item2.SumExpenses)
+        <div class="col">
+            <div>
+                <a href="/couple/settings"><input class="btn btn-light" type="submit" value="Ändra budget"></a>
+                Total budget: @Convert.ToInt32(Model.Item2.TotalBudget)
+                Totala utgifter: @Convert.ToInt32(Model.Item2.SumExpenses)
+            </div>
         </div>
     </div>
-
     <div class="row" style="margin-bottom:15px;">
         <div class="col">
             <a href="/couple/addexpense"><input class="btn btn-light" type="submit" value="Lägg till"></a>
