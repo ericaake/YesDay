@@ -9,19 +9,33 @@
 </div>
 
 <form asp-controller="Couple" asp-action="UpdateVendor" method="post">
-    <div>
+    <div class="form-group-row">
+        <div class="row">
 
-        <label asp-for="Service"></label>
-        <input asp-for="Service" />
-        <span asp-validation-for="Service"></span>
-        <br />
-        <label asp-for="ContactInfo"></label>
-        <textarea asp-for="ContactInfo" rows="10"></textarea>
+            <div class="col-3">
+                <label asp-for="Service"></label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" asp-for="Service" />
+                <span asp-validation-for="Service"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label asp-for="ContactInfo"></label>
+            </div>
+            <div class="col-3">
+                <textarea class="form-control" asp-for="ContactInfo" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="row" style="padding-top:40px;">
+            <input class="btn btn-light" type="submit" value="Uppdatera" />
+        </div>
     </div>
 
-    <input class="btn btn-light" type="submit" value="Uppdatera" />
 
     <br />
 
-    <a href="/Couple/Vendor">Avbryt</a>
 </form>
+<br />
+<a href="/Couple/Vendor">Avbryt</a>

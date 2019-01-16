@@ -11,32 +11,28 @@
 
 
 <form asp-controller="Couple" asp-action="UpdateExpense" method="post">
-    <div>
-        <p class="obligatorisk">(* = Obligatoriska fält)</p>
+    <div class="form-group-row">
         <div class="row">
             <div class="col-3">
                 <label asp-for="Item"></label>
             </div>
             <div class="col-3">
-                <input asp-for="Item" />
+                <input class="form-control" asp-for="Item" />
                 <span asp-validation-for="Item"></span>
-                <br />
-
             </div>
         </div>
         <div class="row">
             <div class="col-3">
                 <label asp-for="ActualCost"></label>
-
             </div>
             <div class="col-3">
-                <input asp-for="ActualCost" />
-
+                <input class="form-control" asp-for="ActualCost" />
             </div>
         </div>
-
     </div>
-    <input class="btn btn-light" type="submit" value="Spara" />
-
-    <a href="/Couple/Expense">Avbryt</a>
+    <div style="padding-top:40px;">
+        <input class="btn btn-light" type="submit" value="Spara  " />
+    </div>
 </form>
+<br />
+<a href="/Couple/Expense">Avbryt</a>
