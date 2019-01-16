@@ -9,32 +9,32 @@
             <h2>Gästlista</h2>
         </div>
         <div class="col">
-            Antal gäster
+            <p style="font-size:15px;"> Antal gäster</p>
         </div>
         <div class="col">
-            Kommer
+            <p style="font-size:15px;">Kommer </p>
         </div>
         <div class="col">
-            Kommer ej
+            <p style="font-size:15px;">Kommer ej</p>
         </div>
-        <div class="col">
-            Inväntar svar
+        <div class="col" >
+            <p style="font-size:15px;">Inväntar svar</p>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
             <a href="/couple/addguest"><input class="btn btn-light" type="submit" value="Lägg till"></a><br /><br />
         </div>
-        <div class="col">
+        <div class="col" style="color:#9FB8BF">
             <h4>|&ensp;&ensp; @Model.Item1.Length &ensp;&ensp;|</h4> 
         </div>
-        <div class="col">
+        <div class="col" style="color:#9FB8BF">
             <h4>|&ensp;&ensp; @Model.Item2.GuestCount[0] &ensp;&ensp;|</h4>
         </div>
-        <div class="col">
+        <div class="col" style="color:#9FB8BF">
             <h4>|&ensp;&ensp; @Model.Item2.GuestCount[1] &ensp;&ensp;|</h4>
         </div>
-        <div class="col">
+        <div class="col" style="color:#9FB8BF">
             <h4>|&ensp;&ensp; @Model.Item2.GuestCount[2] &ensp;&ensp;|</h4>
         </div>
     </div>

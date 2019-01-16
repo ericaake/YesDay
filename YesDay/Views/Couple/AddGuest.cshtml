@@ -11,117 +11,120 @@
 </div>
 <form asp-controller="Couple" asp-action="AddGuest" method="post">
     <p class="obligatorisk">(* = Obligatoriska fält)</p>
-    <div class="row">
-        <div class="col-3">
-            <label asp-for="Firstname"></label>
+    <div class="form-group-row">
+        <div class="row">
+            <div class="col-3">
+                <label asp-for="Firstname"></label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" asp-for="Firstname" />
+                <span asp-validation-for="Firstname"></span>
+            </div>
         </div>
-        <div class="col-3">
-            <input asp-for="Firstname" />
-            <span asp-validation-for="Firstname"></span>
+        <div class="row">
+            <div class="col-3">
+                <label asp-for="Lastname"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname"></span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <label asp-for="Lastname"></label>
-        </div>
-        <div class="col-3">
-            <input asp-for="Lastname" />
-            <span asp-validation-for="Lastname"></span>
-        </div>
-    </div>
-    <div class="row">
+        <div class="row">
 
-        <div class="col-3">
-            <label asp-for="Address"></label>
+            <div class="col-3">
+                <label asp-for="Address"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="Address" class="form-control" />
+            </div>
         </div>
-        <div class="col-3">
-            <input asp-for="Address" />
-        </div>
-    </div>
-    <div class="row">
+        <div class="row">
 
-        <div class="col-3">
-            <label asp-for="Email"></label>
+            <div class="col-3">
+                <label asp-for="Email"></label>
 
-        </div>
-        <div class="col-3">
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-        </div>
-
-    </div>
-    <div class="row">
-
-        <div class="col-3">
-            <label asp-for="InvitedBy"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email"></span>
+            </div>
 
         </div>
-        <div class="col-3">
-            <input asp-for="InvitedBy" />
-        </div>
+        <div class="row">
 
-    </div>
-    <div class="row">
+            <div class="col-3">
+                <label asp-for="InvitedBy"></label>
 
-        <div class="col-3">
-            <label asp-for="GuestTitle"></label>
-        </div>
-        <div class="col-3">
-            <input asp-for="GuestTitle" />
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-3">
-            <label asp-for="WeddingCrewTitle"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="InvitedBy" class="form-control" />
+            </div>
 
         </div>
-        <div class="col-3">
-            <input asp-for="WeddingCrewTitle" />
+        <div class="row">
+
+            <div class="col-3">
+                <label asp-for="GuestTitle"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="GuestTitle" class="form-control" />
+            </div>
         </div>
+        <div class="row">
 
-    </div>
-    <div class="row">
+            <div class="col-3">
+                <label asp-for="WeddingCrewTitle"></label>
 
-        <div class="col-3">
-            <label asp-for="GuestStatus"></label>
-
-        </div>
-        <div class="col-3">
-            <select asp-for="SelectedRsvp" asp-items="Model.GuestStatus"></select>
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col-3">
-            <label asp-for="FoodPreference"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="WeddingCrewTitle" class="form-control" />
+            </div>
 
         </div>
-        <div class="col-3">
-            <input asp-for="FoodPreference" />
+        <div class="row">
+
+            <div class="col-3">
+                <label asp-for="GuestStatus"></label>
+
+            </div>
+            <div class="col-3">
+                <select asp-for="SelectedRsvp" asp-items="Model.GuestStatus" class="form-control"></select>
+            </div>
         </div>
 
-    </div>
+        <div class="row">
 
-    <div class="row">
+            <div class="col-3">
+                <label asp-for="FoodPreference"></label>
 
-        <div class="col-3">
-            <label asp-for="GuestNote"></label>
+            </div>
+            <div class="col-3">
+                <input asp-for="FoodPreference" class="form-control" />
+            </div>
 
         </div>
-        <div class="col-3">
-            <textarea asp-for="GuestNote" rows="8"></textarea>
-        </div>
 
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-            <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+        <div class="row">
+
+            <div class="col-3">
+                <label asp-for="GuestNote"></label>
+
+            </div>
+            <div class="col-3">
+                <textarea asp-for="GuestNote" rows="8" class="form-control"></textarea>
+            </div>
+
+        </div>
+        <div class="row" style="padding-top:40px;">
+            <div class="col-6">
+                <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+                <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+            </div>
         </div>
     </div>
 </form>
+<br />
 <a asp-controller="Couple" asp-action="Guestlist">Avbryt</a>
 
 
