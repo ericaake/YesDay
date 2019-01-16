@@ -22,7 +22,7 @@ namespace YesDay.Controllers
         public IActionResult GetPartialView()
         {
             var date = coupleServices.GetWeddingDate();
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.Today;
             CoupleGetPartialViewVM vM = new CoupleGetPartialViewVM
             {
                 DaysRemaining = (date - today).Days.ToString()
@@ -181,7 +181,14 @@ namespace YesDay.Controllers
         [HttpGet]
         public IActionResult Expense()
         {
-            return View(coupleServices.ShowAllExpenses());
+            CoupleBudgetVM budgetVM = new CoupleBudgetVM
+            {
+                TotalBudget = coupleServices.TotalBudget(),
+                SumExpenses = coupleServices.CalculateExpenses(),
+                Percentage = coupleServices.CalculateExpenses()/ coupleServices.TotalBudget() * 100
+            };
+
+            return View((coupleServices.ShowAllExpenses(), budgetVM));
         }
 
         [HttpGet]

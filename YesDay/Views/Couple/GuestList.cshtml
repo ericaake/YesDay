@@ -4,17 +4,38 @@
     ViewData["Title"] = "YesDay - Gästlista";
 }
 <div class="container">
-    <div id="header" class="row">
+    <div class="row" style="padding-top:35px;">
+        <div class="col-6">
+            <h3>Gästlista</h3>
+        </div>
         <div class="col">
-            <h2>Gästlista</h2>
+            Antal gäster
+        </div>
+        <div class="col">
+            Kommer
+        </div>
+        <div class="col">
+            Kommer ej
+        </div>
+        <div class="col">
+            Inväntar svar
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-6">
             <a href="/couple/addguest"><input class="btn btn-light" type="submit" value="Lägg till"></a><br /><br />
         </div>
         <div class="col">
-           | Antal gäster: @Model.Item1.Length | Kommer: @Model.Item2.GuestCount[0]| Kommer ej: @Model.Item2.GuestCount[1]| Inväntar svar: @Model.Item2.GuestCount[2] |
+            <h4>|&ensp;&ensp; @Model.Item1.Length &ensp;&ensp;|</h4> 
+        </div>
+        <div class="col">
+            <h4>|&ensp;&ensp; @Model.Item2.GuestCount[0] &ensp;&ensp;|</h4>
+        </div>
+        <div class="col">
+            <h4>|&ensp;&ensp; @Model.Item2.GuestCount[1] &ensp;&ensp;|</h4>
+        </div>
+        <div class="col">
+            <h4>|&ensp;&ensp; @Model.Item2.GuestCount[2] &ensp;&ensp;|</h4>
         </div>
     </div>
 
@@ -27,7 +48,7 @@
                         <th scope="col">Efternamn</th>
                         <th scope="col">Adress</th>
                         <th scope="col">Epost</th>
-                        <th scope="col">Inbjuden av</th>
+                        <th scope="col">Tillhör</th>
                         <th scope="col">Gästtitel</th>
                         <th scope="col">Bröllopsroll</th>
                         <th scope="col">OSA</th>

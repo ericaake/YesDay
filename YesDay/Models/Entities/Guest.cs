@@ -14,8 +14,10 @@ namespace YesDay.Models.Entities
         public string InvitedBy { get; set; }
         public string GuestTitle { get; set; }
         public string WeddingCrewTitle { get; set; }
-        public string Rsvp { get; set; }
+        public int Rsvp { get; set; }
         public string FoodPreference { get; set; }
         public string GuestNote { get; set; }
+
+        public AspNetUsers UserrefNavigation { get; set; }
     }
 }

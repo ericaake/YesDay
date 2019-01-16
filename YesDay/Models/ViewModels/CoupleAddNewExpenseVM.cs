@@ -15,7 +15,7 @@ namespace YesDay.Models.ViewModels
         [Display(Name = "Beräknad kostnad")]
         public decimal? EstimatedCost { get; set; }
 
-        [Display(Name = "Faktiskt kostnad")]
+        [Display(Name = "Kostnad")]
         public decimal? ActualCost { get; set; }
     }
 }
