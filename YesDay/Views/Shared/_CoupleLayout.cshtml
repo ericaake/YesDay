@@ -14,7 +14,7 @@
     <script src="~/tox-progress.js"></script>
 </head>
 <body>
-    <div class="container" style="width:100%">
+    <div class="container fluid" style="width:100%">
         <div class="row">
             <div class="col" style="width:5px; height:68px">
                 <div class="nav-toggle">
@@ -57,20 +57,22 @@
             <div class="col">
                 <div id="daysremaining"></div>
             </div>
-            <div class="col" >
+            <div class="col">
                 <form>
                     <div class="form-group">
-                        <input class="btn btn-light"  type="submit" asp-controller="Couple" asp-action="Logout" value="Logga ut" />
+                        <div class="float-right">
+
+                            <input class="btn btn-light" type="submit" asp-controller="Couple" asp-action="Logout" value="Logga ut" />
+                        </div>
                     </div>
                 </form>
-
             </div>
         </div>
         <div class="row">
             <div class="col-10">
-            <div>
-                @RenderBody()
-            </div>
+                <div>
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
