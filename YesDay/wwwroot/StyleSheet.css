@@ -269,3 +269,7 @@ header {
     top:10px;
     left: 350px;
 }
+
+.tox-progress-content {
+    text-align:center;
+}
