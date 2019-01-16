@@ -11,29 +11,31 @@
 <form asp-controller="Couple" asp-action="AddExpense" method="post">
     <div>
         <p class="obligatorisk">(* = Obligatoriska fält)</p>
-        <div class="row">
-            <div class="col-3">
-                <label asp-for="Item"></label>
+        <div class="form-group-row">
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="Item"></label>
+                </div>
+                <div class="col-3">
+                    <input class="form-control" asp-for="Item" />
+                    <span asp-validation-for="Item"></span>
+                </div>
             </div>
-            <div class="col-3">
-                <input asp-for="Item" />
-                <span asp-validation-for="Item"></span>
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="ActualCost"></label>
+                </div>
+                <div class="col-3">
+                    <input class="form-control" asp-for="ActualCost" />
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-3">
-                <label asp-for="ActualCost"></label>
-            </div>
-            <div class="col-3">
-                <input asp-for="ActualCost" />
-            </div>
-        </div>
+        <br />
     </div>
-    <br />
-
-    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
-
+    <div>
+        <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+        <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+    </div>
     <br /><br />
 </form>
 <a href="/Couple/Expense">Avbryt</a>
