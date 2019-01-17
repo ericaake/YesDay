@@ -10,6 +10,8 @@
         </div>
     </div>
     <form asp-controller="Couple" asp-action="AddVendor" method="post">
+        <p class="obligatorisk">(* = Obligatoriska fält)</p>
+
         <div class="form-group-row">
             <div class="row">
 
@@ -17,21 +19,21 @@
                     <label asp-for="Service"></label>
                 </div>
                 <div class="col-3">
-                    <input class="form-control"  asp-for="Service" />
+                    <input class="form-control" asp-for="Service" />
                     <span asp-validation-for="Service"></span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top:10px">
                 <div class="col-3">
                     <label asp-for="ContactInfo"></label>
                 </div>
                 <div class="col-3">
-                    <textarea  class="form-control" asp-for="ContactInfo" rows="5"></textarea>
+                    <textarea class="form-control" asp-for="ContactInfo" rows="5"></textarea>
                 </div>
             </div>
             <div class="row" style="padding-top:40px;">
-                    <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-                    <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+                <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+                <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
             </div>
         </div>
 

@@ -20,7 +20,7 @@
                 <span asp-validation-for="Firstname"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
             <div class="col-3">
                 <label asp-for="Lastname"></label>
             </div>
@@ -29,7 +29,7 @@
                 <span asp-validation-for="Lastname"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="Address"></label>
@@ -38,7 +38,7 @@
                 <input asp-for="Address" class="form-control" />
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="Email"></label>
@@ -50,7 +50,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="InvitedBy"></label>
@@ -61,7 +61,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="GuestTitle"></label>
@@ -70,7 +70,7 @@
                 <input asp-for="GuestTitle" class="form-control" />
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="WeddingCrewTitle"></label>
@@ -81,7 +81,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="GuestStatus"></label>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="FoodPreference"></label>
@@ -104,7 +104,7 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" style="padding-top:10px">
 
             <div class="col-3">
                 <label asp-for="GuestNote"></label>
@@ -115,9 +115,11 @@
             </div>
 
         </div>
-        <div style="padding-top:40px;">
-            <input class="btn btn-light" type="submit" value="Spara " />
-        </div>
+
+    </div>
+    <div style="padding-top:40px;">
+        <input class="btn btn-light" type="submit" value="Spara " />
+    </div>
 </form>
 <br />
  <a asp-controller="Couple" asp-action="Guestlist">Avbryt</a>

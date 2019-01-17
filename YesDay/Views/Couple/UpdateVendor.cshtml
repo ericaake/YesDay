@@ -9,6 +9,8 @@
 </div>
 
 <form asp-controller="Couple" asp-action="UpdateVendor" method="post">
+    <p class="obligatorisk">(* = Obligatoriska fält)</p>
+
     <div class="form-group-row">
         <div class="row">
 
@@ -20,7 +22,7 @@
                 <span asp-validation-for="Service"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:10px">
             <div class="col-3">
                 <label asp-for="ContactInfo"></label>
             </div>

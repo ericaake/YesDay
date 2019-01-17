@@ -10,6 +10,7 @@
 </div>
 
 <form asp-controller="Couple" asp-action="AddTask" method="post">
+    <p class="obligatorisk">(* = Obligatoriska fält)</p>
     <div class="form-group-row">
         <div class="col-3">
             <label asp-for="TaskDescription"></label>
@@ -30,13 +31,13 @@
         <div class="col-3">
             <label asp-for="TaskStatus"></label>
             <select class="form-control" asp-for="SelectedTaskStatus" asp-items="Model.TaskStatus"></select>
-  
+
         </div>
     </div>
-        <div class="row" style="padding-top:40px;">
-            <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
-            <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
-        </div>
+    <div class="row" style="padding-top:40px;">
+        <input class="btn btn-light" type="submit" Name="SaveCancel" value="Spara och stäng" />
+        <input class="btn btn-light" type="submit" Name="SaveAdd" value="Spara och lägg till ny" />
+    </div>
     <br />
-        <a href="/Couple/Checklist">Avbryt</a>
+    <a href="/Couple/Checklist">Avbryt</a>
 </form>

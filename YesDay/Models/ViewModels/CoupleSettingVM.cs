@@ -13,11 +13,11 @@ namespace YesDay.Models.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Förnamn")]
+        [Display(Name = "Förnamn *")]
         public string FirstName1 { get; set; }
 
         [Required]
-        [Display(Name = "Förnamn")]
+        [Display(Name = "Förnamn *")]
         public string FirstName2 { get; set; }
 
         [Display(Name = "Ange ett lösenord")]
