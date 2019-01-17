@@ -17,11 +17,18 @@ namespace YesDay
 {
     public class Startup
     {
+        private readonly IConfiguration conf;
+
+        public Startup(IConfiguration conf)
+        {
+            this.conf = conf;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var connString = conf.GetConnectionString("myConnString");
             services.AddMvc();
             services.AddDbContext<YesDayContext>(o => o.UseSqlServer(connString));
             services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
@@ -38,6 +45,10 @@ namespace YesDay
             services.AddTransient<CoupleServices>();
 
             services.AddHttpContextAccessor();
+
+            //services.AddDbContextPool<YesDayContext>(
+            //    o => o.UseSqlServer(connString,
+            //    c => c.EnableRetryOnFailure()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

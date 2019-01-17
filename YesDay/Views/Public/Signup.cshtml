@@ -13,6 +13,7 @@
     <div class="col">
 
         <form asp-controller="Public" asp-action="signup">
+            <p class="obligatorisk">(* = Obligatoriska fält)</p>
             <div class="form-group col-md-3">
 
                 <label asp-for="Email"></label>
@@ -20,7 +21,7 @@
                 <span asp-validation-for="Email"></span>
 
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" placeholder="Minst åtta tecken" />
                 <span asp-validation-for="Password"></span>
 
                 <label asp-for="FirstName1"></label>

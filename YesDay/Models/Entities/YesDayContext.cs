@@ -32,7 +32,7 @@ namespace YesDay.Models.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YesDayLocalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer("Server=tcp:mercurius.database.windows.net,1433;Initial Catalog=YesDayDB;Persist Security Info=False;User ID=jazzgirls;Password=Wedding666;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -160,7 +160,7 @@ namespace YesDay.Models.Entities
                     .WithMany(p => p.Expense)
                     .HasForeignKey(d => d.Userref)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Expense__Userref__09A971A2");
+                    .HasConstraintName("FK__Expense__Userref__245D67DE");
             });
 
             modelBuilder.Entity<Guest>(entity =>
@@ -199,7 +199,7 @@ namespace YesDay.Models.Entities
                     .WithMany(p => p.Guest)
                     .HasForeignKey(d => d.Userref)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Guest__Userref__0A9D95DB");
+                    .HasConstraintName("FK__Guest__Userref__236943A5");
             });
 
             modelBuilder.Entity<Task>(entity =>
@@ -224,7 +224,7 @@ namespace YesDay.Models.Entities
                     .WithMany(p => p.Task)
                     .HasForeignKey(d => d.Userref)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Task__Userref__0B91BA14");
+                    .HasConstraintName("FK__Task__Userref__208CD6FA");
             });
 
             modelBuilder.Entity<Vendor>(entity =>
@@ -245,7 +245,7 @@ namespace YesDay.Models.Entities
                     .WithMany(p => p.Vendor)
                     .HasForeignKey(d => d.Userref)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Vendor__Userref__0C85DE4D");
+                    .HasConstraintName("FK__Vendor__Userref__1DB06A4F");
             });
         }
     }

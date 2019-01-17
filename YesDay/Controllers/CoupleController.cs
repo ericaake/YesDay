@@ -18,6 +18,7 @@ namespace YesDay.Controllers
         {
             this.coupleServices = services;
         }
+
         [HttpGet]
         public IActionResult GetPartialView()
         {
